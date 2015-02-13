@@ -213,6 +213,15 @@ class SidebarItem {
                 return true;
         }
 
-        return starts_with(URL::current(), $this->route);
+        // If the active state was manually set
+        if(!is_null($this->active))
+            return $this->active;
+
+        $route = ltrim(str_replace(url('/'), '', $this->route), '/');
+
+        return \Request::is(
+            $route,
+            $route . '/*'
+        );
     }
 }
