@@ -3,7 +3,6 @@
 use Closure;
 use ReflectionFunction;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Translation\Translator;
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Itemable;
 use Maatwebsite\Sidebar\Traits\Routeable;
@@ -24,11 +23,6 @@ class SidebarItem {
      * @var
      */
     protected $factory;
-
-    /**
-     * @var Translator
-     */
-    protected $translator;
 
     /**
      * Default view
@@ -69,11 +63,10 @@ class SidebarItem {
     /**
      * @param Container     $container
      * @param Factory       $factory
-     * @param Translator    $translator
      * @param SidebarBadge  $badgeGenerator
      * @param SidebarAppend $appendGenerator
      */
-    public function __construct(Container $container, Factory $factory, Translator $translator, SidebarBadge $badgeGenerator, SidebarAppend $appendGenerator)
+    public function __construct(Container $container, Factory $factory, SidebarBadge $badgeGenerator, SidebarAppend $appendGenerator)
     {
         $this->container = $container;
         $this->factory = $factory;
@@ -187,16 +180,7 @@ class SidebarItem {
      */
     public function getName($value)
     {
-        $langKey = 'menu.' . $value;
-
-        if ( $this->translator->has($langKey) )
-        {
-            return $this->translator->get($langKey);
-        }
-        else
-        {
-            return ucfirst($value);
-        }
+        return $value;
     }
 
 
