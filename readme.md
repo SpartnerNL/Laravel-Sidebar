@@ -79,4 +79,4 @@ $item->badge(function($append, PageRepository $repo)
 
 #### Authorization
 
-By default all groups, items, appends and badges are public for all users. You can use `->authorized(false)` on all these objects to disable them.
+By default all groups, items, appends and badges are public for all users. You can use `->authorized(false)` on all these objects to disable them or use any condition you want.
