@@ -1,6 +1,8 @@
 <?php namespace Maatwebsite\Sidebar;
 
 use Closure;
+use Illuminate\Support\Collection;
+use Maatwebsite\Sidebar\Traits\Sortable;
 use ReflectionFunction;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
@@ -10,7 +12,7 @@ class SidebarManager {
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait;
+    use RouteDependencyResolverTrait, Sortable;
 
     /**
      * @var Container
@@ -28,9 +30,9 @@ class SidebarManager {
     protected $groupsEnabled = true;
 
     /**
-     * @var array
+     * @var Collection
      */
-    public $groups = [];
+    public $groups;
 
     /**
      * @param Container    $container
@@ -40,6 +42,7 @@ class SidebarManager {
     {
         $this->container = $container;
         $this->group = $group;
+        $this->groups = new Collection;
     }
 
     /**
@@ -107,6 +110,13 @@ class SidebarManager {
     public function render()
     {
         $html = '';
+
+        // Order by weight
+        $this->order(
+            $this->groups,
+            'weight'
+        );
+
         foreach ($this->groups as $group)
         {
             $group->setAttribute('enabled', $this->groupsEnabled);
@@ -123,16 +133,16 @@ class SidebarManager {
      */
     public function groupExists($name)
     {
-        return isset($this->groups[$name]);
+        return $this->groups->has($name);
     }
 
     /**
      * @param $name
+     * @return mixed
      */
     public function getGroup($name)
     {
-        if($this->groupExists($name))
-            return $this->groups[$name];
+        return $this->groups->get($name);
     }
 
     /**
@@ -141,7 +151,7 @@ class SidebarManager {
      */
     public function setGroup($name, $group)
     {
-        $this->groups[$name] = $group;
+        $this->groups->put($name, $group);
     }
 
     /**

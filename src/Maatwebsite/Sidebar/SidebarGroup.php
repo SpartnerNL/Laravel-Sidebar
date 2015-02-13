@@ -1,19 +1,21 @@
 <?php namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Collection;
 use Maatwebsite\Sidebar\Traits\Itemable;
 use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
+use Maatwebsite\Sidebar\Traits\Sortable;
 
 class SidebarGroup {
 
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Authorizable;
+    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Authorizable, Sortable;
 
     /**
      * @var Container
@@ -62,6 +64,8 @@ class SidebarGroup {
         // Reset the object
         $instance = $this->cleanInstance();
         $instance->setAttribute('name', $name);
+        $instance->setAttribute('weight', 1);
+        $instance->items = new Collection;
 
         return $instance;
     }

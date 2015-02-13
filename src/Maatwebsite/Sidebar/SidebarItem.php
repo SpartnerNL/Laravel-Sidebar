@@ -1,6 +1,7 @@
 <?php namespace Maatwebsite\Sidebar;
 
 use Closure;
+use Illuminate\Support\Collection;
 use ReflectionFunction;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Contracts\View\Factory;
@@ -84,6 +85,8 @@ class SidebarItem {
     {
         $instance = $this->cleanInstance();
         $instance->setAttribute('name', $name);
+        $instance->setAttribute('weight', 1);
+        $instance->items = new Collection;
 
         return $instance;
     }

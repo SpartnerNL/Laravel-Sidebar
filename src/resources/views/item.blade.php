@@ -20,7 +20,7 @@
 
     @if($item->hasItems())
         <ul class="treeview-menu">
-            @foreach($item->items as $item)
+            @foreach($item->getItems() as $item)
                 @include('sidebar::item')
             @endforeach
         </ul>

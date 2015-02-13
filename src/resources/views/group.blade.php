@@ -3,7 +3,7 @@
 @endif
 
 <ul class="sidebar-menu @if(!$group->enabled) no-groups @endif">
-    @foreach($group->items as $item)
+    @foreach($group->getItems() as $item)
         {!! $item->render() !!}
     @endforeach
 </ul>

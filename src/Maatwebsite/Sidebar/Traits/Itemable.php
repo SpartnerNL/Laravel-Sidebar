@@ -1,14 +1,15 @@
 <?php namespace Maatwebsite\Sidebar\Traits;
 
 use Closure;
+use Illuminate\Support\Collection;
 use ReflectionFunction;
 
 trait Itemable {
 
     /**
-     * @var array
+     * @var Collection
      */
-    public $items = [];
+    public $items;
 
     /**
      * Add an item to the group
@@ -31,7 +32,7 @@ trait Itemable {
 
         // Add the new item to the array
         if ( !empty($item) )
-            $this->items[] = $item;
+            $this->items->push($item);
 
         // Return the item object
         return $item;
@@ -52,6 +53,14 @@ trait Itemable {
      */
     public function getItems()
     {
+        if(method_exists($this, 'order'))
+        {
+            $this->order(
+                $this->items,
+                'weight'
+            );
+        }
+
         return $this->items;
     }
 }
