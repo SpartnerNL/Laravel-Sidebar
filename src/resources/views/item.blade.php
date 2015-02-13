@@ -21,7 +21,7 @@
     @if($item->hasItems())
         <ul class="treeview-menu">
             @foreach($item->items as $item)
-                @include('acp::layouts.partials.sidebar.item')
+                @include('sidebar::item')
             @endforeach
         </ul>
     @endif

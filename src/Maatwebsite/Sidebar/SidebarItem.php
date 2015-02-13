@@ -5,6 +5,7 @@ use ReflectionFunction;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Itemable;
+use Maatwebsite\Sidebar\Traits\Sortable;
 use Maatwebsite\Sidebar\Traits\Routeable;
 use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
@@ -17,7 +18,7 @@ class SidebarItem {
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Routeable, Authorizable;
+    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Routeable, Authorizable, Sortable;
 
     /**
      * @var
