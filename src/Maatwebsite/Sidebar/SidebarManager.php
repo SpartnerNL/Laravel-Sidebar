@@ -86,9 +86,6 @@ class SidebarManager {
             call_user_func_array($callback, $parameters);
         }
 
-        // Enable or disable group rendering
-        $group->setAttribute('enabled', $this->groupsEnabled);
-
         // Add the group to our menu groups
         if ( !empty($group) )
             $this->groups[] = $group;
@@ -106,6 +103,8 @@ class SidebarManager {
         $html = '';
         foreach ($this->groups as $group)
         {
+            $group->setAttribute('enabled', $this->groupsEnabled);
+
             $html .= $group->render();
         }
 

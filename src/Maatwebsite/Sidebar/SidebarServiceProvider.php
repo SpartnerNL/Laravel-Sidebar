@@ -18,7 +18,7 @@ class SidebarServiceProvider extends ServiceProvider {
         $this->publishes([
             $views => base_path('resources/views/vendor/sidebar'),
         ]);
-        
+
         $this->app->singleton(
             'Maatwebsite\Sidebar\SidebarManager'
         );
