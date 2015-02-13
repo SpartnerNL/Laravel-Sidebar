@@ -70,7 +70,6 @@ class SidebarItem {
     {
         $this->container = $container;
         $this->factory = $factory;
-        $this->translator = $translator;
         $this->badgeGenerator = $badgeGenerator;
         $this->appendGenerator = $appendGenerator;
     }
