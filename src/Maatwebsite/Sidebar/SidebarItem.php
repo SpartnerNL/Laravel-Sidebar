@@ -215,7 +215,7 @@ class SidebarItem {
 
     /**
      * Check the active state
-     * @return mixed
+     * @return bool
      */
     protected function checkActiveState()
     {
@@ -226,7 +226,6 @@ class SidebarItem {
                 return true;
         }
 
-        // $this->route is already transformed to an url
-        return $this->route == URL::current() ? true : false;
+        return starts_with(URL::current(), $this->route);
     }
 }
