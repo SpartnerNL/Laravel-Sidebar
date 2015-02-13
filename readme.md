@@ -67,7 +67,7 @@ To append a badge you can use `$item->badge()` You can either pass the value and
 $item->badge('new', 'badge-success');
 
 // Chain methods
-$item->badge('new)->color('badge-success');
+$item->badge('new')->color('badge-success');
 
 // Inside the closure you can make use of dependency injection
 $item->badge(function($append, PageRepository $repo)
@@ -79,4 +79,4 @@ $item->badge(function($append, PageRepository $repo)
 
 #### Authorization
 
-By default all groups, items, appends and badges are public for all users. You can use `->authorized(false)` on all these objects to disable them.
+By default all groups, items, appends and badges are public for all users. You can use `->authorized(false)` on all these objects to disable them or use any condition you want.
