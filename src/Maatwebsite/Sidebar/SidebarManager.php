@@ -73,8 +73,14 @@ class SidebarManager {
      */
     public function group($name, $callback = null)
     {
-        // Create a new group
-        $group = $this->group->init($name);
+        if(!$this->groupExists($name))
+        {
+            $group = $this->group->init($name);
+        }
+        else
+        {
+            $group = $this->getGroup($name);
+        }
 
         if ( $callback instanceof Closure )
         {
@@ -88,7 +94,7 @@ class SidebarManager {
 
         // Add the group to our menu groups
         if ( !empty($group) )
-            $this->groups[] = $group;
+            $this->setGroup($name, $group);
 
         // Return the group object
         return $group;
@@ -109,6 +115,33 @@ class SidebarManager {
         }
 
         return $html;
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function groupExists($name)
+    {
+        return isset($this->groups[$name]);
+    }
+
+    /**
+     * @param $name
+     */
+    public function getGroup($name)
+    {
+        if($this->groupExists($name))
+            return $this->groups[$name];
+    }
+
+    /**
+     * @param $name
+     * @param $group
+     */
+    public function setGroup($name, $group)
+    {
+        $this->groups[$name] = $group;
     }
 
     /**
