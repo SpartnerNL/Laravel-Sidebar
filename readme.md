@@ -67,7 +67,7 @@ To append a badge you can use `$item->badge()` You can either pass the value and
 $item->badge('new', 'badge-success');
 
 // Chain methods
-$item->badge('new)->color('badge-success');
+$item->badge('new')->color('badge-success');
 
 // Inside the closure you can make use of dependency injection
 $item->badge(function($append, PageRepository $repo)
