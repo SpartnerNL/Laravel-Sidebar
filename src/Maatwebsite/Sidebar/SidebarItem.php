@@ -34,7 +34,7 @@ class SidebarItem {
      * Default view
      * @var string
      */
-    protected $view = 'acp::layouts.partials.sidebar.item';
+    protected $view = 'sidebar::item';
 
     /**
      * @var string

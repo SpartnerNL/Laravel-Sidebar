@@ -34,7 +34,7 @@ class SidebarGroup {
      * Default view
      * @var string
      */
-    protected $view = 'acp::layouts.partials.sidebar.group';
+    protected $view = 'sidebar::group';
 
     /**
      * @var string

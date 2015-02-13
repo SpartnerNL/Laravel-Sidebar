@@ -23,7 +23,7 @@ class SidebarAppend {
      * Default view
      * @var string
      */
-    protected $view = 'acp::layouts.partials.sidebar.append';
+    protected $view = 'sidebar::append';
 
     /**
      * @var string

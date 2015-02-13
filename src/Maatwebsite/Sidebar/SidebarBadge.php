@@ -21,7 +21,7 @@ class SidebarBadge {
      * Default view
      * @var string
      */
-    protected $view = 'acp::layouts.partials.sidebar.badge';
+    protected $view = 'sidebar::badge';
 
     /**
      * @var string
