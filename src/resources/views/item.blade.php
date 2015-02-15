@@ -9,7 +9,7 @@
             @endforeach
         @endif
 
-        @if($item->hasItems())<i class="fa fa-angle-left pull-right"></i>@endif
+        @if($item->hasItems())<i class="{{ $item->toggleIcon or 'fa fa-angle-left' }} pull-right"></i>@endif
     </a>
 
     @if($item->hasAppend())
