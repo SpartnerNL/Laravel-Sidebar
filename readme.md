@@ -26,7 +26,7 @@ It's possible to group the menu items. A little header will be rendered to separ
 
 The first parameter of `$group->addItem()` is the name. The name field will automatically be translated through the `menu` translation file. (e.g. `menu.dashboard`). If the translation does not exists, the given name will be displayed.
 
-The second parameter is optionally a callback. Alternativly you can chain the methods.
+The second parameter is optionally a callback. Alternatively you can chain the methods.
 
 You can change the `route`, `name` and `icon`. If you route given it will automatically be translated to `acp.{$name}.index`.
 
@@ -34,9 +34,9 @@ You can change the `route`, `name` and `icon`. If you route given it will automa
 
 We can go a level deeper with the menu items by calling `$item->addItem()`. This will automatically nest them. You can add the same values to them as their parent item (including appends and badges).
 
-#### Group less
+#### Without group headings
 
-To disable rendering the group headings, you can easily use `$builder->groupLess()`. Group headings will now be ignored.
+To disable rendering of the group headings, you can easily use `$builder->withoutGroup()`. Group headings will now be ignored.
 
 ### Appends
 
