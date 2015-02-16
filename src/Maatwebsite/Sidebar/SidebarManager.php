@@ -119,7 +119,9 @@ class SidebarManager {
 
         foreach ($this->groups as $group)
         {
-            $group->setAttribute('enabled', $this->groupsEnabled);
+             // Don't overrule user preferences
+            if(!isset($group->enabled))
+                $group->setAttribute('enabled', $this->groupsEnabled);
 
             $html .= $group->render();
         }
