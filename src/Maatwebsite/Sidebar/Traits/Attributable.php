@@ -124,7 +124,7 @@ trait Attributable {
      */
     public function __isset($attribute)
     {
-        return $this->getAttribute($attribute, false);
+        return isset($this->attributes[$attribute]) ? true : false;
     }
 
     /**
