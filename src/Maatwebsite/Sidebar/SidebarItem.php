@@ -104,7 +104,7 @@ class SidebarItem {
      * @param bool $condition
      * @return $this
      */
-    public function IsActiveWhen($condition = true)
+    public function isActiveWhen($condition = true)
     {
         $this->active = $condition;
 
