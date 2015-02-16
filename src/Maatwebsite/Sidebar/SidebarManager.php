@@ -60,8 +60,9 @@ class SidebarManager {
 
     /**
      * Disable groups
+     * @return $this
      */
-    public function groupLess()
+    public function withoutGroup()
     {
         $this->groupsEnabled = false;
 
