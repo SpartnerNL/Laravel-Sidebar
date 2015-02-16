@@ -109,7 +109,7 @@ class SidebarManager {
      */
     public function render()
     {
-        $html = '';
+        $html = '<ul class="sidebar-menu">';
 
         // Order by weight
         $this->order(
@@ -124,7 +124,7 @@ class SidebarManager {
             $html .= $group->render();
         }
 
-        return $html;
+        return $html . '</ul>';
     }
 
     /**

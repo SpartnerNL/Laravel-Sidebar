@@ -1,9 +1,9 @@
 <?php namespace Maatwebsite\Sidebar;
 
 use Closure;
+use ReflectionFunction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use ReflectionFunction;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Itemable;
