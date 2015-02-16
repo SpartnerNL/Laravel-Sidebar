@@ -1,6 +1,7 @@
 <?php namespace Maatwebsite\Sidebar;
 
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use ReflectionFunction;
 use Illuminate\Support\Facades\URL;
@@ -63,17 +64,24 @@ class SidebarItem {
     private $appendGenerator;
 
     /**
+     * @var Request
+     */
+    private $request;
+
+    /**
      * @param Container     $container
+     * @param Request       $request
      * @param Factory       $factory
      * @param SidebarBadge  $badgeGenerator
      * @param SidebarAppend $appendGenerator
      */
-    public function __construct(Container $container, Factory $factory, SidebarBadge $badgeGenerator, SidebarAppend $appendGenerator)
+    public function __construct(Container $container, Request $request, Factory $factory, SidebarBadge $badgeGenerator, SidebarAppend $appendGenerator)
     {
         $this->container = $container;
         $this->factory = $factory;
         $this->badgeGenerator = $badgeGenerator;
         $this->appendGenerator = $appendGenerator;
+        $this->request = $request;
     }
 
     /**
@@ -89,6 +97,18 @@ class SidebarItem {
         $instance->items = new Collection;
 
         return $instance;
+    }
+
+    /**
+     * Set active state
+     * @param bool $condition
+     * @return $this
+     */
+    public function IsActiveWhen($condition = true)
+    {
+        $this->active = $condition;
+
+        return $this;
     }
 
     /**
@@ -214,14 +234,14 @@ class SidebarItem {
         }
 
         // If the active state was manually set
-        if(!is_null($this->active))
+        if ( !is_null($this->active) )
             return $this->active;
 
-        $route = ltrim(str_replace(url('/'), '', $this->route), '/');
+        $path = ltrim(str_replace(url('/'), '', $this->route), '/');
 
-        return \Request::is(
-            $route,
-            $route . '/*'
+        return $this->request->is(
+            $path,
+            $path . '/*'
         );
     }
 }
