@@ -27,7 +27,7 @@ class SidebarManager {
     /**
      * @var bool
      */
-    protected $groupsEnabled = true;
+    protected $withoutGroupHeading = false;
 
     /**
      * @var Collection
@@ -64,7 +64,7 @@ class SidebarManager {
      */
     public function withoutGroup()
     {
-        $this->groupsEnabled = false;
+        $this->withoutGroupHeading = true;
 
         return $this;
     }
@@ -77,7 +77,7 @@ class SidebarManager {
      */
     public function group($name, $callback = null)
     {
-        if(!$this->groupExists($name))
+        if ( !$this->groupExists($name) )
         {
             $group = $this->group->init($name);
         }
@@ -120,9 +120,9 @@ class SidebarManager {
 
         foreach ($this->groups as $group)
         {
-             // Don't overrule user preferences
-            if(!isset($group->enabled))
-                $group->setAttribute('enabled', $this->groupsEnabled);
+            // Don't overrule user preferences
+            if ( !isset($group->hideHeading) )
+                $group->hideHeading($this->withoutGroupHeading);
 
             $html .= $group->render();
         }
@@ -136,7 +136,7 @@ class SidebarManager {
      */
     public function groupExists($name)
     {
-        return $this->groups->has($name);
+        return $this->groups->has($this->getNameKey($name));
     }
 
     /**
@@ -145,7 +145,7 @@ class SidebarManager {
      */
     public function getGroup($name)
     {
-        return $this->groups->get($name);
+        return $this->groups->get($this->getNameKey($name));
     }
 
     /**
@@ -154,7 +154,7 @@ class SidebarManager {
      */
     public function setGroup($name, $group)
     {
-        $this->groups->put($name, $group);
+        $this->groups->put($this->getNameKey($name), $group);
     }
 
     /**
@@ -164,5 +164,14 @@ class SidebarManager {
     public function __toString()
     {
         return $this->render();
+    }
+
+    /**
+     * @param $name
+     * @return string
+     */
+    protected function getNameKey($name)
+    {
+        return md5($name);
     }
 }

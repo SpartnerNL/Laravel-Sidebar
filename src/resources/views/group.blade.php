@@ -1,4 +1,4 @@
-@if($group->enabled)
+@if($group->shouldShowHeading())
     <li class="menu-title">{{ $group->name }}</li>
 @endif
 

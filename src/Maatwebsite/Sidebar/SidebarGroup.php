@@ -71,6 +71,25 @@ class SidebarGroup {
     }
 
     /**
+     * @param bool $state
+     * @return bool
+     */
+    public function hideHeading($state = true)
+    {
+        $this->hideHeading = $state;
+
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function shouldShowHeading()
+    {
+        return $this->hideHeading ? false : true;
+    }
+
+    /**
      * Get item instance
      * @return $this
      */
