@@ -21,7 +21,7 @@
     @if($item->hasItems())
         <ul class="treeview-menu">
             @foreach($item->getItems() as $item)
-                @include('sidebar::item')
+                {!! $item->render() !!}
             @endforeach
         </ul>
     @endif
