@@ -1,8 +1,29 @@
-# Laravel Sidebar
+# Laravel Sidebar v1.0.0
+
+####Installation
+
+Require this package in your `composer.json` and update composer. This will download the package and PHPExcel of PHPOffice.
+
+```php
+"maatwebsite/laravel-sidebar": "~1.0.0"
+```
+
+After updating composer, add the ServiceProvider to the providers array in `config/app.php`
+
+```php
+'Maatwebsite\Excel\SidebarServiceProvider',
+```
+
+To publish the default views use:
+
+```php
+php artisan vendor:publish
+```
 
 #### Adding a menu
 
 ```php
+// Or use dependency injection
 $builder = app('Maatwebsite\Sidebar\SidebarManager');
 
 $builder->group('app', function ($group)
@@ -80,3 +101,21 @@ $item->badge(function($append, PageRepository $repo)
 #### Authorization
 
 By default all groups, items, appends and badges are public for all users. You can use `->authorized(false)` on all these objects to disable them or use any condition you want.
+
+#### Advanced usage
+If you have multiple sidebars, you can extend the SidebarManager and register a new singleton:
+
+```php
+class AdminSidebar extends SidebarManager
+{
+    public function build($callback = null)
+    {
+        $this->group('application', function(SidebarGroup $group) {
+        
+            $group->addItem(...)
+        
+        });
+    }
+
+}
+```
