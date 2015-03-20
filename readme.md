@@ -2,7 +2,7 @@
 
 ####Installation
 
-Require this package in your `composer.json` and update composer. This will download the package and PHPExcel of PHPOffice.
+Require this package in your `composer.json` and run `composer update`.
 
 ```php
 "maatwebsite/laravel-sidebar": "~1.0.0"
@@ -11,7 +11,7 @@ Require this package in your `composer.json` and update composer. This will down
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`
 
 ```php
-'Maatwebsite\Excel\SidebarServiceProvider',
+'Maatwebsite\Sidebar\SidebarServiceProvider',
 ```
 
 To publish the default views use:
