@@ -5,6 +5,7 @@ trait Routeable {
     /**
      * Set route
      * @param $route
+     * @param array $params
      * @return $this
      */
     public function route($route, array $params = [])
