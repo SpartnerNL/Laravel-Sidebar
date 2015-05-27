@@ -5,11 +5,12 @@ trait Routeable {
     /**
      * Set route
      * @param $route
+     * @param array $params
      * @return $this
      */
-    public function route($route)
+    public function route($route, array $params = [])
     {
-        return $this->setAttribute('route', route($route));
+        return $this->setAttribute('route', route($route, $params));
     }
 
     /**
