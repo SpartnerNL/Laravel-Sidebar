@@ -2,7 +2,8 @@
 
 namespace Maatwebsite\Sidebar\Traits;
 
-trait Attributable {
+trait Attributable
+{
 
     /**
      * @var array
@@ -42,8 +43,7 @@ trait Attributable {
     {
         $value = $this->getRawAttribute($attribute, $value);
 
-        if ( $this->hasMutator($attribute) )
-        {
+        if ($this->hasMutator($attribute)) {
             return $this->mutate($attribute, $value);
         }
 
@@ -58,8 +58,9 @@ trait Attributable {
      */
     public function getRawAttribute($attribute, $value = null)
     {
-        if ( isset($this->attributes[$attribute]) )
+        if (isset($this->attributes[$attribute])) {
             $value = $this->attributes[$attribute];
+        }
 
         return $value;
     }

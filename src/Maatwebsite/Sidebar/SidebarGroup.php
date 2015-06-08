@@ -11,7 +11,8 @@ use Maatwebsite\Sidebar\Traits\Authorizable;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
 
-class SidebarGroup {
+class SidebarGroup
+{
 
     /**
      * Traits

@@ -2,7 +2,8 @@
 
 namespace Maatwebsite\Sidebar\Traits;
 
-trait Authorizable {
+trait Authorizable
+{
 
     /**
      * @var bool

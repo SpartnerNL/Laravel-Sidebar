@@ -2,7 +2,8 @@
 
 namespace Maatwebsite\Sidebar\Traits;
 
-trait Routeable {
+trait Routeable
+{
 
     /**
      * Set route
@@ -22,11 +23,13 @@ trait Routeable {
     public function getRoute($value)
     {
         // No need to have route, when we have children
-        if ( $this->hasItems() )
+        if ($this->hasItems()) {
             return '#';
+        }
 
-        if ( !$value )
+        if (! $value) {
             $value = route('acp.' . $this->getRawAttribute('name') . '.index');
+        }
 
         return $value;
     }

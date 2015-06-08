@@ -9,7 +9,8 @@ use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
 
-class SidebarAppend {
+class SidebarAppend
+{
 
     /**
      * Traits

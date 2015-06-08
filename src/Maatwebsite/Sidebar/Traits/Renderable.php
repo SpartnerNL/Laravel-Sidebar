@@ -2,15 +2,15 @@
 
 namespace Maatwebsite\Sidebar\Traits;
 
-trait Renderable {
+trait Renderable
+{
 
     /**
      * Render the item
      */
     public function render()
     {
-        if($this->isAuthorized())
-        {
+        if ($this->isAuthorized()) {
             return $this->factory->make($this->getView(), [
                 $this->getRenderType() => $this
             ])->render();
