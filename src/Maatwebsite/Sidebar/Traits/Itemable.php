@@ -53,14 +53,6 @@ trait Itemable {
      */
     public function getItems()
     {
-        if(method_exists($this, 'order'))
-        {
-            $this->order(
-                $this->items,
-                'weight'
-            );
-        }
-
-        return $this->items;
+        return $this->items->sortBy('weight');
     }
 }

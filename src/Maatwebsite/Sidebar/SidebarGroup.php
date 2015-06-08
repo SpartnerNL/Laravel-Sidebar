@@ -8,14 +8,13 @@ use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
-use Maatwebsite\Sidebar\Traits\Sortable;
 
 class SidebarGroup {
 
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Authorizable, Sortable;
+    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Authorizable;
 
     /**
      * @var Container

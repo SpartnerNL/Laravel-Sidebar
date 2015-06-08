@@ -2,7 +2,6 @@
 
 use Closure;
 use Illuminate\Support\Collection;
-use Maatwebsite\Sidebar\Traits\Sortable;
 use ReflectionFunction;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
@@ -12,7 +11,7 @@ class SidebarManager {
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait, Sortable;
+    use RouteDependencyResolverTrait;
 
     /**
      * @var Container
@@ -113,12 +112,9 @@ class SidebarManager {
         $html = '<ul class="sidebar-menu">';
 
         // Order by weight
-        $this->order(
-            $this->groups,
-            'weight'
-        );
+        $groups = $this->groups->sortBy('weight');
 
-        foreach ($this->groups as $group)
+        foreach ($groups as $group)
         {
             // Don't overrule user preferences
             if ( !isset($group->hideHeading) )
