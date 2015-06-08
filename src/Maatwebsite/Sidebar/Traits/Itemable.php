@@ -1,10 +1,13 @@
-<?php namespace Maatwebsite\Sidebar\Traits;
+<?php
+
+namespace Maatwebsite\Sidebar\Traits;
 
 use Closure;
 use Illuminate\Support\Collection;
 use ReflectionFunction;
 
-trait Itemable {
+trait Itemable
+{
 
     /**
      * @var Collection
@@ -21,8 +24,7 @@ trait Itemable {
     {
         $item = $this->getItem()->init($name);
 
-        if ( $callback && $callback instanceof Closure )
-        {
+        if ( $callback && $callback instanceof Closure ) {
             $parameters = $this->resolveMethodDependencies(
                 ['item' => $item], new ReflectionFunction($callback)
             );
@@ -31,8 +33,9 @@ trait Itemable {
         }
 
         // Add the new item to the array
-        if ( !empty($item) )
+        if (! empty($item)) {
             $this->items->push($item);
+        }
 
         // Return the item object
         return $item;
@@ -53,14 +56,6 @@ trait Itemable {
      */
     public function getItems()
     {
-        if(method_exists($this, 'order'))
-        {
-            $this->order(
-                $this->items,
-                'weight'
-            );
-        }
-
-        return $this->items;
+        return $this->items->sortBy('weight');
     }
 }

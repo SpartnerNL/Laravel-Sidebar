@@ -1,18 +1,20 @@
-<?php namespace Maatwebsite\Sidebar;
+<?php
+
+namespace Maatwebsite\Sidebar;
 
 use Closure;
 use Illuminate\Support\Collection;
-use Maatwebsite\Sidebar\Traits\Sortable;
 use ReflectionFunction;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
 
-class SidebarManager {
+class SidebarManager
+{
 
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait, Sortable;
+    use RouteDependencyResolverTrait;
 
     /**
      * @var Container
@@ -52,8 +54,9 @@ class SidebarManager {
      */
     public function build($callback = null)
     {
-        if ( $callback instanceof Closure )
+        if ($callback instanceof Closure) {
             call_user_func($callback, $this);
+        }
 
         return $this;
     }
@@ -77,17 +80,13 @@ class SidebarManager {
      */
     public function group($name, $callback = null)
     {
-        if ( !$this->groupExists($name) )
-        {
+        if (! $this->groupExists($name)) {
             $group = $this->group->init($name);
-        }
-        else
-        {
+        } else {
             $group = $this->getGroup($name);
         }
 
-        if ( $callback instanceof Closure )
-        {
+        if ($callback instanceof Closure) {
             // Make dependency injection possible
             $parameters = $this->resolveMethodDependencies(
                 ['group' => $group], new ReflectionFunction($callback)
@@ -97,8 +96,9 @@ class SidebarManager {
         }
 
         // Add the group to our menu groups
-        if ( !empty($group) )
+        if (! empty($group)) {
             $this->setGroup($name, $group);
+        }
 
         // Return the group object
         return $group;
@@ -113,16 +113,13 @@ class SidebarManager {
         $html = '<ul class="sidebar-menu">';
 
         // Order by weight
-        $this->order(
-            $this->groups,
-            'weight'
-        );
+        $groups = $this->groups->sortBy('weight');
 
-        foreach ($this->groups as $group)
-        {
+        foreach ($groups as $group) {
             // Don't overrule user preferences
-            if ( !isset($group->hideHeading) )
+            if (! isset($group->hideHeading)) {
                 $group->hideHeading($this->withoutGroupHeading);
+            }
 
             $html .= $group->render();
         }

@@ -1,8 +1,11 @@
-<?php namespace Maatwebsite\Sidebar;
+<?php
+
+namespace Maatwebsite\Sidebar;
 
 use Illuminate\Support\ServiceProvider;
 
-class SidebarServiceProvider extends ServiceProvider {
+class SidebarServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

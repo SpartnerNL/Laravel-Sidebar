@@ -1,4 +1,6 @@
-<?php namespace Maatwebsite\Sidebar;
+<?php
+
+namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Itemable;
@@ -6,7 +8,8 @@ use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
 
-class SidebarBadge {
+class SidebarBadge
+{
 
     /**
      * Traits

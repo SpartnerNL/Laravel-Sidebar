@@ -1,6 +1,9 @@
-<?php namespace Maatwebsite\Sidebar\Traits;
+<?php
 
-trait Authorizable {
+namespace Maatwebsite\Sidebar\Traits;
+
+trait Authorizable
+{
 
     /**
      * @var bool

@@ -1,4 +1,6 @@
-<?php namespace Maatwebsite\Sidebar;
+<?php
+
+namespace Maatwebsite\Sidebar;
 
 use Closure;
 use ReflectionFunction;
@@ -7,7 +9,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Itemable;
-use Maatwebsite\Sidebar\Traits\Sortable;
 use Maatwebsite\Sidebar\Traits\Routeable;
 use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
@@ -15,12 +16,13 @@ use Maatwebsite\Sidebar\Traits\Authorizable;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
 
-class SidebarItem {
+class SidebarItem
+{
 
     /**
      * Traits
      */
-    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Routeable, Authorizable, Sortable;
+    use RouteDependencyResolverTrait, Attributable, Renderable, Itemable, Routeable, Authorizable;
 
     /**
      * @var
@@ -121,20 +123,16 @@ class SidebarItem {
     {
         $badge = $this->badgeGenerator->init();
 
-        if ( $callback instanceof Closure )
-        {
+        if ($callback instanceof Closure) {
             $parameters = $this->resolveMethodDependencies(
                 ['badge' => $badge], new ReflectionFunction($callback)
             );
-
             call_user_func_array($callback, $parameters);
-        }
-        elseif ( is_string($callback) )
-        {
+        } else if (is_string($callback)) {
             $badge->setAttribute('value', $callback);
-
-            if ( $color )
+            if ($color) {
                 $badge->setAttribute('color', $color);
+            }
         }
 
         $this->badges[] = $badge;
@@ -160,15 +158,12 @@ class SidebarItem {
     {
         $append = $this->appendGenerator->init();
 
-        if ( $callback instanceof Closure )
-        {
+        if ($callback instanceof Closure) {
             $parameters = $this->resolveMethodDependencies(
                 ['append' => $append], new ReflectionFunction($callback)
             );
             call_user_func_array($callback, $parameters);
-        }
-        elseif ( is_string($callback) )
-        {
+        } else if (is_string($callback)) {
             // just a route
             $append->route($callback);
         }
@@ -214,8 +209,9 @@ class SidebarItem {
      */
     public function getState($value = '')
     {
-        if ( !$value && $this->checkActiveState() )
+        if (! $value && $this->checkActiveState()) {
             return 'active';
+        }
 
         return $value;
     }
@@ -227,15 +223,16 @@ class SidebarItem {
     protected function checkActiveState()
     {
         // Check if one of the children is active
-        foreach ($this->items as $item)
-        {
-            if ( $item->checkActiveState() )
+        foreach ($this->items as $item) {
+            if ($item->checkActiveState()) {
                 return true;
+            }
         }
 
         // If the active state was manually set
-        if ( !is_null($this->active) )
+        if (! is_null($this->active)) {
             return $this->active;
+        }
 
         $path = ltrim(str_replace(url('/'), '', $this->route), '/');
 
