@@ -76,18 +76,27 @@ class SidebarItem
      * @param SidebarBadge  $badgeGenerator
      * @param SidebarAppend $appendGenerator
      */
-    public function __construct(Container $container, Request $request, Factory $factory, SidebarBadge $badgeGenerator, SidebarAppend $appendGenerator)
-    {
+    public function __construct(
+        Container $container,
+        Request $request,
+        Factory $factory,
+        SidebarBadge $badgeGenerator,
+        SidebarAppend $appendGenerator
+    ) {
         $this->container       = $container;
         $this->factory         = $factory;
         $this->badgeGenerator  = $badgeGenerator;
         $this->appendGenerator = $appendGenerator;
         $this->request         = $request;
+
+        $this->items = new Collection;
     }
 
     /**
      * Init item
+     *
      * @param $name
+     *
      * @return $this
      */
     public function init($name)
@@ -102,7 +111,9 @@ class SidebarItem
 
     /**
      * Set active state
-     * @param  bool  $condition
+     *
+     * @param bool $condition
+     *
      * @return $this
      */
     public function isActiveWhen($condition = true)
@@ -114,8 +125,10 @@ class SidebarItem
 
     /**
      * Badge
-     * @param  Closure $callback
-     * @param  bool    $color
+     *
+     * @param Closure $callback
+     * @param bool    $color
+     *
      * @return $this
      */
     public function badge($callback = null, $color = false)
@@ -150,7 +163,9 @@ class SidebarItem
 
     /**
      * Append something
-     * @param  callable $callback
+     *
+     * @param callable $callback
+     *
      * @return $this
      */
     public function append($callback = null)
@@ -191,23 +206,15 @@ class SidebarItem
     }
 
     /**
-     * Get the name
-     * @param $value
-     * @return string
-     */
-    public function getName($value)
-    {
-        return $value;
-    }
-
-    /**
      * Get the state
+     *
      * @param $value
+     *
      * @return string
      */
     public function getState($value = '')
     {
-        if (! $value && $this->checkActiveState()) {
+        if (!$value && $this->checkActiveState()) {
             return 'active';
         }
 
@@ -228,7 +235,7 @@ class SidebarItem
         }
 
         // If the active state was manually set
-        if (! is_null($this->active)) {
+        if (!is_null($this->active)) {
             return $this->active;
         }
 

@@ -9,7 +9,6 @@ use Mockery as m;
 
 class SidebarGroupTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var SidebarGroup
      */
@@ -35,7 +34,7 @@ class SidebarGroupTest extends PHPUnit_Framework_TestCase
         $this->container = m::mock(Container::class);
 
         $this->factory = m::mock(Factory::class);
-        $this->item = m::mock(SidebarItem::class);
+        $this->item    = m::mock(SidebarItem::class);
         $this->item->shouldReceive('init')->andReturnSelf();
 
         $this->group = new SidebarGroup(
@@ -44,7 +43,6 @@ class SidebarGroupTest extends PHPUnit_Framework_TestCase
             $this->item
         );
     }
-
 
     public function test_can_init()
     {
@@ -60,7 +58,6 @@ class SidebarGroupTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $group->weight);
         $this->assertInstanceOf(Collection::class, $group->getItems());
     }
-
 
     public function test_can_hide_heading()
     {
