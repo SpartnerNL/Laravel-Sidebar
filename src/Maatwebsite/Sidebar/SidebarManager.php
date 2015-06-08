@@ -1,4 +1,6 @@
-<?php namespace Maatwebsite\Sidebar;
+<?php
+
+namespace Maatwebsite\Sidebar;
 
 use Closure;
 use Illuminate\Support\Collection;

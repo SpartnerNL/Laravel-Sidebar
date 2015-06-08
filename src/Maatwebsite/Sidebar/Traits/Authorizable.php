@@ -1,4 +1,6 @@
-<?php namespace Maatwebsite\Sidebar\Traits;
+<?php
+
+namespace Maatwebsite\Sidebar\Traits;
 
 trait Authorizable {
 
