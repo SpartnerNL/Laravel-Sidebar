@@ -72,6 +72,14 @@ class SidebarManager
     }
 
     /**
+     * @return boolean
+     */
+    public function isWithoutGroupHeading()
+    {
+        return $this->withoutGroupHeading;
+    }
+
+    /**
      * Start grouping our items
      * @param  string       $name
      * @param  Closure      $callback
@@ -169,5 +177,13 @@ class SidebarManager
     protected function getNameKey($name)
     {
         return md5($name);
+    }
+
+    /**
+     * @return Collection|SidebarGroup[]
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }
