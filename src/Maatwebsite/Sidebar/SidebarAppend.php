@@ -2,6 +2,7 @@
 
 namespace Maatwebsite\Sidebar;
 
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;

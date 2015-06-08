@@ -2,6 +2,7 @@
 
 namespace Maatwebsite\Sidebar;
 
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
@@ -14,6 +15,7 @@ class SidebarBadge
      * Traits
      */
     use Attributable, Renderable, Itemable, Authorizable;
+
     /**
      * @var
      */
@@ -42,7 +44,7 @@ class SidebarBadge
     public function __construct(Container $container, Factory $factory)
     {
         $this->container = $container;
-        $this->factory   = $factory;
+        $this->factory = $factory;
     }
 
     /**
