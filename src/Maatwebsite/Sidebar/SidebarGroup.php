@@ -2,18 +2,17 @@
 
 namespace Maatwebsite\Sidebar;
 
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Routing\RouteDependencyResolverTrait;
 use Illuminate\Support\Collection;
-use Maatwebsite\Sidebar\Traits\Itemable;
-use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
-use Illuminate\Contracts\Container\Container;
-use Illuminate\Routing\RouteDependencyResolverTrait;
+use Maatwebsite\Sidebar\Traits\Itemable;
+use Maatwebsite\Sidebar\Traits\Renderable;
 
 class SidebarGroup
 {
-
     /**
      * Traits
      */
@@ -46,19 +45,19 @@ class SidebarGroup
     protected $renderType = 'group';
 
     /**
-     * @param Container           $container
-     * @param Factory             $factory
-     * @param         SidebarItem $item
+     * @param Container   $container
+     * @param Factory     $factory
+     * @param SidebarItem $item
      */
     public function __construct(Container $container, Factory $factory, SidebarItem $item)
     {
         $this->container = $container;
-        $this->factory = $factory;
-        $this->item = $item;
+        $this->factory   = $factory;
+        $this->item      = $item;
     }
 
     /**
-     * @param                $name
+     * @param               $name
      * @return SidebarGroup
      */
     public function init($name)
@@ -73,7 +72,7 @@ class SidebarGroup
     }
 
     /**
-     * @param bool $state
+     * @param  bool $state
      * @return bool
      */
     public function hideHeading($state = true)

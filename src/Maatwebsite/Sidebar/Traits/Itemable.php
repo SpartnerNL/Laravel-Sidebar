@@ -8,7 +8,6 @@ use ReflectionFunction;
 
 trait Itemable
 {
-
     /**
      * @var Collection
      */
@@ -16,15 +15,15 @@ trait Itemable
 
     /**
      * Add an item to the group
-     * @param         $name
-     * @param Closure $callback
+     * @param           $name
+     * @param  Closure  $callback
      * @return MenuItem
      */
     public function addItem($name, Closure $callback = null)
     {
         $item = $this->getItem()->init($name);
 
-        if ( $callback && $callback instanceof Closure ) {
+        if ($callback && $callback instanceof Closure) {
             $parameters = $this->resolveMethodDependencies(
                 ['item' => $item], new ReflectionFunction($callback)
             );

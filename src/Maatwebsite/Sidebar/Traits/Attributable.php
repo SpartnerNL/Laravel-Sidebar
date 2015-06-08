@@ -4,7 +4,6 @@ namespace Maatwebsite\Sidebar\Traits;
 
 trait Attributable
 {
-
     /**
      * @var array
      */
@@ -16,6 +15,7 @@ trait Attributable
     public function cleanInstance()
     {
         $instance = app(get_class($this));
+
         return $instance;
     }
 
@@ -34,8 +34,8 @@ trait Attributable
 
     /**
      * Get attribute
-     * @param      $attribute
-     * @param null $value
+     * @param             $attribute
+     * @param  null       $value
      * @return mixed|null
      * @internal param null $default
      */
@@ -52,8 +52,8 @@ trait Attributable
 
     /**
      * Get the raw attribute value
-     * @param      $attribute
-     * @param mixed|null $value
+     * @param             $attribute
+     * @param  mixed|null $value
      * @return null
      */
     public function getRawAttribute($attribute, $value = null)

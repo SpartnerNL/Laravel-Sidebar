@@ -4,7 +4,6 @@ namespace Maatwebsite\Sidebar\Traits;
 
 trait Authorizable
 {
-
     /**
      * @var bool
      */
@@ -21,7 +20,7 @@ trait Authorizable
 
     /**
      * Authorize the group/item
-     * @param bool $state
+     * @param  bool  $state
      * @return $this
      */
     public function authorize($state = true)
@@ -30,5 +29,4 @@ trait Authorizable
 
         return $this;
     }
-
 }

@@ -4,11 +4,10 @@ namespace Maatwebsite\Sidebar\Traits;
 
 trait Routeable
 {
-
     /**
      * Set route
      * @param $route
-     * @param array $params
+     * @param  array $params
      * @return $this
      */
     public function route($route, array $params = [])

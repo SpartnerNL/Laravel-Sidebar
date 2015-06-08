@@ -4,7 +4,6 @@ namespace Maatwebsite\Sidebar\Traits;
 
 trait Renderable
 {
-
     /**
      * Render the item
      */

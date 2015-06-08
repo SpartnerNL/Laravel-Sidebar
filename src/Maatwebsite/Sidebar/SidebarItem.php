@@ -3,22 +3,21 @@
 namespace Maatwebsite\Sidebar;
 
 use Closure;
-use ReflectionFunction;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Routing\RouteDependencyResolverTrait;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Traits\Itemable;
-use Maatwebsite\Sidebar\Traits\Routeable;
-use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
-use Illuminate\Contracts\Container\Container;
-use Illuminate\Routing\RouteDependencyResolverTrait;
+use Maatwebsite\Sidebar\Traits\Itemable;
+use Maatwebsite\Sidebar\Traits\Renderable;
+use Maatwebsite\Sidebar\Traits\Routeable;
+use ReflectionFunction;
 
 class SidebarItem
 {
-
     /**
      * Traits
      */
@@ -79,11 +78,11 @@ class SidebarItem
      */
     public function __construct(Container $container, Request $request, Factory $factory, SidebarBadge $badgeGenerator, SidebarAppend $appendGenerator)
     {
-        $this->container = $container;
-        $this->factory = $factory;
-        $this->badgeGenerator = $badgeGenerator;
+        $this->container       = $container;
+        $this->factory         = $factory;
+        $this->badgeGenerator  = $badgeGenerator;
         $this->appendGenerator = $appendGenerator;
-        $this->request = $request;
+        $this->request         = $request;
     }
 
     /**
@@ -103,7 +102,7 @@ class SidebarItem
 
     /**
      * Set active state
-     * @param bool $condition
+     * @param  bool  $condition
      * @return $this
      */
     public function isActiveWhen($condition = true)
@@ -115,8 +114,8 @@ class SidebarItem
 
     /**
      * Badge
-     * @param Closure $callback
-     * @param bool    $color
+     * @param  Closure $callback
+     * @param  bool    $color
      * @return $this
      */
     public function badge($callback = null, $color = false)
@@ -128,7 +127,7 @@ class SidebarItem
                 ['badge' => $badge], new ReflectionFunction($callback)
             );
             call_user_func_array($callback, $parameters);
-        } else if (is_string($callback)) {
+        } elseif (is_string($callback)) {
             $badge->setAttribute('value', $callback);
             if ($color) {
                 $badge->setAttribute('color', $color);
@@ -151,7 +150,7 @@ class SidebarItem
 
     /**
      * Append something
-     * @param callable $callback
+     * @param  callable $callback
      * @return $this
      */
     public function append($callback = null)
@@ -163,7 +162,7 @@ class SidebarItem
                 ['append' => $append], new ReflectionFunction($callback)
             );
             call_user_func_array($callback, $parameters);
-        } else if (is_string($callback)) {
+        } elseif (is_string($callback)) {
             // just a route
             $append->route($callback);
         }
@@ -200,7 +199,6 @@ class SidebarItem
     {
         return $value;
     }
-
 
     /**
      * Get the state

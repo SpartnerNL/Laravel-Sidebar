@@ -3,14 +3,13 @@
 namespace Maatwebsite\Sidebar;
 
 use Closure;
-use Illuminate\Support\Collection;
-use ReflectionFunction;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\RouteDependencyResolverTrait;
+use Illuminate\Support\Collection;
+use ReflectionFunction;
 
 class SidebarManager
 {
-
     /**
      * Traits
      */
@@ -43,8 +42,8 @@ class SidebarManager
     public function __construct(Container $container, SidebarGroup $group)
     {
         $this->container = $container;
-        $this->group = $group;
-        $this->groups = new Collection;
+        $this->group     = $group;
+        $this->groups    = new Collection;
     }
 
     /**
@@ -74,8 +73,8 @@ class SidebarManager
 
     /**
      * Start grouping our items
-     * @param  string  $name
-     * @param  Closure $callback
+     * @param  string       $name
+     * @param  Closure      $callback
      * @return SidebarGroup
      */
     public function group($name, $callback = null)

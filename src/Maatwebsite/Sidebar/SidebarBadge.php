@@ -3,14 +3,13 @@
 namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Traits\Itemable;
-use Maatwebsite\Sidebar\Traits\Renderable;
 use Maatwebsite\Sidebar\Traits\Attributable;
 use Maatwebsite\Sidebar\Traits\Authorizable;
+use Maatwebsite\Sidebar\Traits\Itemable;
+use Maatwebsite\Sidebar\Traits\Renderable;
 
 class SidebarBadge
 {
-
     /**
      * Traits
      */
@@ -32,7 +31,7 @@ class SidebarBadge
     protected $renderType = 'badge';
 
     /**
-     * @param Factory    $factory
+     * @param Factory $factory
      */
     public function __construct(Factory $factory)
     {
