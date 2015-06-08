@@ -14,7 +14,7 @@ trait Attributable
      */
     public function cleanInstance()
     {
-        $instance = app(get_class($this));
+        $instance = $this->container->make(get_class($this));
 
         return $instance;
     }
@@ -37,7 +37,6 @@ trait Attributable
      * @param             $attribute
      * @param  null       $value
      * @return mixed|null
-     * @internal param null $default
      */
     public function getAttribute($attribute, $value = null)
     {

@@ -26,6 +26,18 @@ trait Renderable
     }
 
     /**
+     * @param $view
+     *
+     * @return $this
+     */
+    public function setView($view)
+    {
+        $this->view = $view;
+
+        return $this;
+    }
+
+    /**
      * Get the render type
      * @return mixed
      */
