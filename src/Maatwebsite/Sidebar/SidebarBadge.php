@@ -31,11 +31,18 @@ class SidebarBadge
     protected $renderType = 'badge';
 
     /**
-     * @param Factory $factory
+     * @var Container
      */
-    public function __construct(Factory $factory)
+    protected $container;
+
+    /**
+     * @param Container $container
+     * @param Factory   $factory
+     */
+    public function __construct(Container $container, Factory $factory)
     {
-        $this->factory = $factory;
+        $this->container = $container;
+        $this->factory   = $factory;
     }
 
     /**
