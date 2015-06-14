@@ -119,6 +119,6 @@ class DefaultGroup implements Group, Serializable
      */
     public function getItems()
     {
-        // TODO: Implement getItems() method.
+        return [];
     }
 }

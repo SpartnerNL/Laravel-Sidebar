@@ -58,6 +58,11 @@ class SidebarServiceProvider extends ServiceProvider
             'Maatwebsite\Sidebar\Group',
             'Maatwebsite\Sidebar\Domain\DefaultGroup'
         );
+
+        $this->app->bind(
+            'Maatwebsite\Sidebar\Presentation\SidebarRenderer',
+            'Maatwebsite\Sidebar\Presentation\Illuminate\IlluminateSidebarRenderer'
+        );
     }
 
     /**
