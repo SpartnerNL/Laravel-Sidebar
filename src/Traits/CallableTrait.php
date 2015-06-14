@@ -3,9 +3,13 @@
 namespace Maatwebsite\Sidebar\Traits;
 
 use Closure;
+use Illuminate\Routing\RouteDependencyResolverTrait;
+use ReflectionFunction;
 
 trait CallableTrait
 {
+    use RouteDependencyResolverTrait;
+
     /**
      * Preform a callback on this workbook instance.
      *
@@ -16,8 +20,12 @@ trait CallableTrait
      */
     public function call(Closure $callback = null, $caller = null)
     {
-        if (is_callable($callback)) {
-            call_user_func($callback, $caller ?: $this);
+        if ($callback instanceof Closure) {
+            // Make dependency injection possible
+            $parameters = $this->resolveMethodDependencies(
+                [$caller], new ReflectionFunction($callback)
+            );
+            call_user_func_array($callback, $parameters);
         }
 
         return $caller;

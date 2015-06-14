@@ -7,12 +7,13 @@ use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Builder;
 use Maatwebsite\Sidebar\Exceptions\LogicException;
 use Maatwebsite\Sidebar\Menu;
+use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Serializable;
 
 class DefaultBuilder implements Builder, Serializable
 {
-    use CallableTrait;
+    use CallableTrait, CacheableTrait;
 
     /**
      * @var Menu|null
@@ -23,6 +24,14 @@ class DefaultBuilder implements Builder, Serializable
      * @var Container
      */
     protected $container;
+
+    /**
+     * Data that should be cached
+     * @var array
+     */
+    protected $cacheables = [
+        'menu'
+    ];
 
     /**
      * @param Container $container
@@ -68,32 +77,5 @@ class DefaultBuilder implements Builder, Serializable
         $this->menu = $menu;
 
         return $this;
-    }
-
-    /**
-     * String representation of object
-     * @link http://php.net/manual/en/serializable.serialize.php
-     * @return string the string representation of the object or null
-     */
-    public function serialize()
-    {
-        return serialize([
-            'menu' => $this->menu
-        ]);
-    }
-
-    /**
-     * Constructs the object
-     * @link http://php.net/manual/en/serializable.unserialize.php
-     *
-     * @param string $serialized The string representation of the object.
-     *
-     * @return void
-     */
-    public function unserialize($serialized)
-    {
-        $data = unserialize($serialized);
-
-        $this->menu = $data['menu'];
     }
 }
