@@ -4,6 +4,8 @@
   "license": "LGPL",
   "keywords": [
     "laravel",
+    "sidebar",
+    "menu",
     "acp"
   ],
   "authors": [
@@ -14,10 +16,12 @@
   ],
   "require": {
     "php": ">=5.4.0",
+    "illuminate/cache": "~5.0",
+    "illuminate/container": "~5.0",
     "illuminate/contracts": "~5.0",
     "illuminate/support": "~5.0",
-    "illuminate/view": "~5.0",
-    "illuminate/routing": "~5.0"
+    "illuminate/routing": "~5.0",
+    "illuminate/view": "~5.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.1",
@@ -25,7 +29,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Maatwebsite\\Sidebar\\": "src/Maatwebsite/Sidebar"
+      "Maatwebsite\\Sidebar\\": "src/"
     }
   },
   "config": {
