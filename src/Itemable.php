@@ -1,10 +1,11 @@
-<?php namespace Maatwebsite\Sidebar;
+<?php
+
+namespace Maatwebsite\Sidebar;
 
 use Closure;
 
 interface Itemable
 {
-
     /**
      * Add a new Item (or edit an existing item) to the Group
      *

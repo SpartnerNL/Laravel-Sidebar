@@ -1,11 +1,12 @@
-<?php namespace Maatwebsite\Sidebar\Traits;
+<?php
+
+namespace Maatwebsite\Sidebar\Traits;
 
 use Closure;
 use Maatwebsite\Sidebar\Item;
 
 trait ItemableTrait
 {
-
     /**
      * @var Collection|Item[]
      */

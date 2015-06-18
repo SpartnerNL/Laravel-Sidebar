@@ -7,7 +7,6 @@ use Maatwebsite\Sidebar\Infrastructure\BuilderCacheDecoratorFactory;
 
 class SidebarServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool

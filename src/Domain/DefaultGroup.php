@@ -4,6 +4,7 @@ namespace Maatwebsite\Sidebar\Domain;
 
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Collection;
+use Maatwebsite\Sidebar\Exceptions\LogicException;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
@@ -51,7 +52,7 @@ class DefaultGroup implements Group, Serializable
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->items = new Collection();
+        $this->items     = new Collection();
     }
 
     /**
@@ -81,6 +82,10 @@ class DefaultGroup implements Group, Serializable
      */
     public function setWeight($weight)
     {
+        if (!is_int($weight)) {
+            throw new LogicException('Weight should be an integer');
+        }
+
         $this->weight = $weight;
 
         return $this;

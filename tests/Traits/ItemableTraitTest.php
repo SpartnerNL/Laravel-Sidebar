@@ -10,7 +10,6 @@ use Mockery as m;
 
 class ItemableTraitTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var Illuminate\Contracts\Container\Container
      */
@@ -24,7 +23,7 @@ class ItemableTraitTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
-        $this->itemable = new StubItemableClass($this->container);
+        $this->itemable  = new StubItemableClass($this->container);
     }
 
     public function test_can_add_an_item_instance()
@@ -104,6 +103,6 @@ class StubItemableClass implements Itemable
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->items = new Collection();
+        $this->items     = new Collection();
     }
 }

@@ -6,7 +6,6 @@ use Illuminate\Support\Collection;
 
 interface Group extends Itemable
 {
-
     /**
      * @return string
      */

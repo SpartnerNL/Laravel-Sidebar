@@ -5,7 +5,7 @@ use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Group;
 use Mockery as m;
 
-class DefaultGroupGroupTest extends PHPUnit_Framework_TestCase
+class DefaultGroupTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container

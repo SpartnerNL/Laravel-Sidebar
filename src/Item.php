@@ -5,14 +5,14 @@ namespace Maatwebsite\Sidebar;
 interface Item extends Itemable
 {
     /**
-     * @return string
+     * @return mixed
      */
     public function getName();
 
     /**
-     * @param $name
+     * @param mixed $name
      *
-     * @return Item
+     * @return Item $item
      */
     public function setName($name);
 
@@ -27,4 +27,73 @@ interface Item extends Itemable
      * @return int
      */
     public function getWeight();
+
+    /**
+     * @return string
+     */
+    public function getIcon();
+
+    /**
+     * @param string $icon
+     *
+     * @return Item
+     */
+    public function setIcon($icon);
+
+    /**
+     * @return string
+     */
+    public function getUrl();
+
+    /**
+     * @param string $url
+     *
+     * @return Item
+     */
+    public function setUrl($url);
+
+    /**
+     * @param       $route
+     * @param array $params
+     *
+     * @return Item
+     */
+    public function route($route, $params = []);
+
+    /**
+     * @param callable|null|string $callbackOrValue
+     * @param string|null          $className
+     *                                              return Badge
+     */
+    public function badge($callbackOrValue = null, $className = null);
+
+    /**
+     * @param Badge $badge
+     *
+     * @return Badge
+     */
+    public function setBadge(Badge $badge);
+
+    /**
+     * @return Collection|Badge[]
+     */
+    public function getBadges();
+
+    /**
+     * @param callable|string|null $callbackOrUrl
+     * @param string|null          $icon
+     */
+    public function append($callbackOrUrl = null, $icon = null);
+
+    /**
+     * @param Append $append
+     *
+     * @return Append
+     */
+    public function setAppend(Append $append);
+
+    /**
+     * @return Collection|Append[]
+     */
+    public function getAppends();
 }
