@@ -75,6 +75,12 @@ class SidebarServiceProvider extends ServiceProvider
             'Maatwebsite\Sidebar\Domain\DefaultBadge'
         );
 
+        // Bind Append
+        $this->app->bind(
+            'Maatwebsite\Sidebar\Append',
+            'Maatwebsite\Sidebar\Domain\DefaultAppend'
+        );
+
         // Bind Renderer
         $this->app->bind(
             'Maatwebsite\Sidebar\Presentation\SidebarRenderer',
