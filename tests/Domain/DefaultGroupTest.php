@@ -1,6 +1,7 @@
 <?php
 
 use Maatwebsite\Sidebar\Domain\DefaultGroup;
+use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Group;
 use Mockery as m;
 
@@ -38,14 +39,16 @@ class DefaultGroupGroupTest extends PHPUnit_Framework_TestCase
 
     public function test_group_can_be_cached()
     {
+        $item = new DefaultItem($this->container);
+        $this->group->addItem($item);
+
         $serialized   = serialize($this->group);
         $unserialized = unserialize($serialized);
 
         $this->assertInstanceOf('Maatwebsite\Sidebar\Group', $unserialized);
         $this->assertInstanceOf('Illuminate\Support\Collection', $unserialized->getItems());
 
-        // TODO: check if items are added
-        $this->assertCount(0, $unserialized->getItems());
+        $this->assertCount(1, $unserialized->getItems());
     }
 }
 

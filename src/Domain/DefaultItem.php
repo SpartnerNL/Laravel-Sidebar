@@ -1,16 +1,13 @@
-<?php
-
-namespace Maatwebsite\Sidebar\Domain;
+<?php namespace Maatwebsite\Sidebar\Domain;
 
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Collection;
-use Maatwebsite\Sidebar\Group;
+use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Maatwebsite\Sidebar\Traits\ItemableTrait;
-use Serializable;
 
-class DefaultGroup implements Group, Serializable
+class DefaultItem implements Item
 {
     use CallableTrait, CacheableTrait, ItemableTrait;
 
@@ -25,11 +22,6 @@ class DefaultGroup implements Group, Serializable
     protected $weight = 0;
 
     /**
-     * @var bool
-     */
-    protected $heading = true;
-
-    /**
      * @var Container
      */
     protected $container;
@@ -40,9 +32,8 @@ class DefaultGroup implements Group, Serializable
      */
     protected $cacheables = [
         'name',
-        'items',
         'weight',
-        'heading'
+        'items'
     ];
 
     /**
@@ -55,9 +46,17 @@ class DefaultGroup implements Group, Serializable
     }
 
     /**
-     * @param string $name
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
      *
-     * @return Group
+     * @return Item $item
      */
     public function setName($name)
     {
@@ -67,17 +66,9 @@ class DefaultGroup implements Group, Serializable
     }
 
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @param int $weight
      *
-     * @return Group
+     * @return Item
      */
     public function setWeight($weight)
     {
@@ -92,25 +83,5 @@ class DefaultGroup implements Group, Serializable
     public function getWeight()
     {
         return $this->weight;
-    }
-
-    /**
-     * @param bool $hide
-     *
-     * @return Group
-     */
-    public function hideHeading($hide = true)
-    {
-        $this->heading = !$hide;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function shouldShowHeading()
-    {
-        return $this->heading ? true : false;
     }
 }

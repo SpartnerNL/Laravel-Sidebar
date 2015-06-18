@@ -7,6 +7,7 @@ use Maatwebsite\Sidebar\Infrastructure\BuilderCacheDecoratorFactory;
 
 class SidebarServiceProvider extends ServiceProvider
 {
+
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool
@@ -33,8 +34,10 @@ class SidebarServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Register config
         $this->registerConfig();
 
+        // Bind Builder
         $this->app->singleton('Maatwebsite\Sidebar\Builder', function ($app) {
 
             $builder = $app->make('Maatwebsite\Sidebar\Domain\DefaultBuilder');
@@ -49,16 +52,25 @@ class SidebarServiceProvider extends ServiceProvider
             return $builder;
         });
 
+        // Bind Menu
         $this->app->bind(
             'Maatwebsite\Sidebar\Menu',
             'Maatwebsite\Sidebar\Domain\DefaultMenu'
         );
 
+        // Bind Group
         $this->app->bind(
             'Maatwebsite\Sidebar\Group',
             'Maatwebsite\Sidebar\Domain\DefaultGroup'
         );
 
+        // Bind Item
+        $this->app->bind(
+            'Maatwebsite\Sidebar\Item',
+            'Maatwebsite\Sidebar\Domain\DefaultItem'
+        );
+
+        // Bind Renderer
         $this->app->bind(
             'Maatwebsite\Sidebar\Presentation\SidebarRenderer',
             'Maatwebsite\Sidebar\Presentation\Illuminate\IlluminateSidebarRenderer'
@@ -104,8 +116,11 @@ class SidebarServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
+            'Maatwebsite\Sidebar\Menu',
+            'Maatwebsite\Sidebar\Item',
+            'Maatwebsite\Sidebar\Group',
             'Maatwebsite\Sidebar\Builder',
-            'Maatwebsite\Sidebar\Menu'
+            'Maatwebsite\Sidebar\Presentation\SidebarRenderer'
         ];
     }
 }
