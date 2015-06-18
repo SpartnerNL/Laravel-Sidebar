@@ -56,7 +56,7 @@ class DefaultGroup implements Group, Serializable
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->items = new Collection();
+        $this->items     = new Collection();
     }
 
     /**

@@ -6,7 +6,6 @@ use Mockery as m;
 
 class DefaultGroupGroupTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var Illuminate\Contracts\Container\Container
      */
@@ -20,7 +19,7 @@ class DefaultGroupGroupTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
-        $this->group = new DefaultGroup($this->container);
+        $this->group     = new DefaultGroup($this->container);
     }
 
     public function test_can_instantiate_new_group()
@@ -39,7 +38,7 @@ class DefaultGroupGroupTest extends PHPUnit_Framework_TestCase
 
     public function test_group_can_be_cached()
     {
-        $serialized = serialize($this->group);
+        $serialized   = serialize($this->group);
         $unserialized = unserialize($serialized);
 
         $this->assertInstanceOf('Maatwebsite\Sidebar\Group', $unserialized);
