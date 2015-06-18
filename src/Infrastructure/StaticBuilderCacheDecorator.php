@@ -44,9 +44,21 @@ class StaticBuilderCacheDecorator implements Builder
      */
     public function build(Closure $callback = null)
     {
-        return $this->cache->remember($this->getCacheKey(), $this->getCacheDuration(), function () use ($callback) {
+        $cached = false;
+        if ($this->cache->has($this->getCacheKey())) {
+            $cached = true;
+        }
+
+        $menu = $this->cache->remember($this->getCacheKey(), $this->getCacheDuration(), function () use ($callback) {
             return $this->builder->build($callback);
         });
+
+        // Make sure the cached Menu instance is present on the original builder object
+        if ($cached) {
+            $this->builder->setMenu($menu);
+        }
+
+        return $menu;
     }
 
     /**

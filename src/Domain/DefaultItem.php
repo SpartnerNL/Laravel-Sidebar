@@ -11,8 +11,9 @@ use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Maatwebsite\Sidebar\Traits\ItemableTrait;
+use Serializable;
 
-class DefaultItem implements Item
+class DefaultItem implements Item, Serializable
 {
     use CallableTrait, CacheableTrait, ItemableTrait;
 
@@ -178,11 +179,26 @@ class DefaultItem implements Item
     /**
      * @param callable|null|string $callbackOrValue
      * @param string|null          $className
-     *                                              return Badge
+     *
+     * @return Badge
      */
     public function badge($callbackOrValue = null, $className = null)
     {
-        // TODO: implement
+        $badge = $this->container->make('Maatwebsite\Sidebar\Badge');
+
+        if (is_callable($callbackOrValue)) {
+            $this->call($callbackOrValue, $badge);
+        } elseif ($callbackOrValue) {
+            $badge->setValue($callbackOrValue);
+        }
+
+        if ($className) {
+            $badge->setClass($className);
+        }
+
+        $this->addBadge($badge);
+
+        return $badge;
     }
 
     /**
@@ -190,7 +206,7 @@ class DefaultItem implements Item
      *
      * @return Badge
      */
-    public function setBadge(Badge $badge)
+    public function addBadge(Badge $badge)
     {
         $this->badges->push($badge);
 
@@ -219,7 +235,7 @@ class DefaultItem implements Item
      *
      * @return Append
      */
-    public function setAppend(Append $append)
+    public function addAppend(Append $append)
     {
         $this->appends->push($append);
 

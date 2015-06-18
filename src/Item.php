@@ -72,7 +72,7 @@ interface Item extends Itemable
      *
      * @return Badge
      */
-    public function setBadge(Badge $badge);
+    public function addBadge(Badge $badge);
 
     /**
      * @return Collection|Badge[]
@@ -90,7 +90,7 @@ interface Item extends Itemable
      *
      * @return Append
      */
-    public function setAppend(Append $append);
+    public function addAppend(Append $append);
 
     /**
      * @return Collection|Append[]

@@ -78,17 +78,4 @@ class DefaultBuilder implements Builder, Serializable
 
         return $this;
     }
-
-    /**
-     * Render Sidebar to HTML
-     * @return string
-     */
-    public function render()
-    {
-        if (!$this->menu) {
-            throw new LogicException('You first have to build the menu');
-        }
-
-        return $this->menu->render();
-    }
 }

@@ -42,10 +42,4 @@ interface Menu
      * @return Menu $menu
      */
     public function add(Menu $menu);
-
-    /**
-     * Render the Menu instance to HTML
-     * @return string
-     */
-    public function render();
 }

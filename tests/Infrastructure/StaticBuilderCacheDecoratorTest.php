@@ -28,6 +28,8 @@ class StaticBuilderCacheDecoratorTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->builder = m::mock('Maatwebsite\Sidebar\Domain\DefaultBuilder');
+        $this->builder->shouldReceive('setMenu');
+
         $this->cache   = m::mock('Illuminate\Cache\CacheManager');
         $this->config  = m::mock('Illuminate\Contracts\Config\Repository');
         $this->config->shouldReceive('get')
@@ -43,8 +45,13 @@ class StaticBuilderCacheDecoratorTest extends PHPUnit_Framework_TestCase
 
     public function test_menu_gets_cached()
     {
-        $this->cache->shouldReceive('remember')->andReturn('cached');
+        $menu = m::mock('Maatwebsite\Sidebar\Menu');
 
-        $this->assertEquals('cached', $this->decorator->build());
+        $this->cache->shouldReceive('has')->andReturn(true);
+        $this->cache->shouldReceive('remember')->andReturn(
+            $menu
+        );
+
+        $this->assertEquals($menu, $this->decorator->build());
     }
 }

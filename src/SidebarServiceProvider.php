@@ -69,6 +69,12 @@ class SidebarServiceProvider extends ServiceProvider
             'Maatwebsite\Sidebar\Domain\DefaultItem'
         );
 
+        // Bind Badge
+        $this->app->bind(
+            'Maatwebsite\Sidebar\Badge',
+            'Maatwebsite\Sidebar\Domain\DefaultBadge'
+        );
+
         // Bind Renderer
         $this->app->bind(
             'Maatwebsite\Sidebar\Presentation\SidebarRenderer',
@@ -118,6 +124,8 @@ class SidebarServiceProvider extends ServiceProvider
             'Maatwebsite\Sidebar\Menu',
             'Maatwebsite\Sidebar\Item',
             'Maatwebsite\Sidebar\Group',
+            'Maatwebsite\Sidebar\Badge',
+            'Maatwebsite\Sidebar\Append',
             'Maatwebsite\Sidebar\Builder',
             'Maatwebsite\Sidebar\Presentation\SidebarRenderer'
         ];

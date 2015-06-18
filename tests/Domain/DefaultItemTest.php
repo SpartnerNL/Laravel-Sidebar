@@ -1,10 +1,11 @@
 <?php
 
+use Maatwebsite\Sidebar\Domain\DefaultBadge;
 use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Item;
 use Mockery as m;
 
-class DefaultItemItemTest extends PHPUnit_Framework_TestCase
+class DefaultItemTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -80,6 +81,44 @@ class DefaultItemItemTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('icon', $unserialized->getIcon());
         $this->assertEquals(1, $unserialized->getWeight());
         $this->assertEquals('url', $unserialized->getUrl());
+    }
+
+    public function test_can_add_a_badge_instance()
+    {
+        $item = new DefaultBadge($this->container);
+        $item->setValue(1);
+        $this->item->addBadge($item);
+
+        $this->assertInstanceOf('Illuminate\Support\Collection', $this->item->getBadges());
+        $this->assertCount(1, $this->item->getBadges());
+        $this->assertEquals('1', $this->item->getBadges()->first()->getValue());
+    }
+
+    public function test_can_add_a_badge()
+    {
+        $mock = $this->mockContainerMake();
+        $mock->shouldReceive('setValue');
+        $mock->shouldReceive('setClass');
+        $mock->shouldReceive('getValue')->andReturn(1);
+        $mock->shouldReceive('getClass')->andReturn('className');
+
+        $this->item->badge(1, 'className');
+
+        $this->assertInstanceOf('Illuminate\Support\Collection', $this->item->getBadges());
+        $this->assertCount(1, $this->item->getBadges());
+        $this->assertEquals(1, $this->item->getBadges()->first()->getValue());
+        $this->assertEquals('className', $this->item->getBadges()->first()->getClass());
+    }
+
+    protected function mockContainerMake()
+    {
+        $mock = m::mock('Maatwebsite\Sidebar\Badge');
+
+        $this->container->shouldReceive('make')->with('Maatwebsite\Sidebar\Badge')->andReturn(
+            $mock
+        );
+
+        return $mock;
     }
 }
 
