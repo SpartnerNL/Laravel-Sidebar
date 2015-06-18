@@ -9,7 +9,7 @@ interface Builder
     /**
      * @param callable $callback
      *
-     * @return Builder
+     * @return Menu
      */
     public function build(Closure $callback = null);
 

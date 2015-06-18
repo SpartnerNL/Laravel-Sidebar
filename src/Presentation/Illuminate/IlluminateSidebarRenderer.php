@@ -3,11 +3,12 @@
 namespace Maatwebsite\Sidebar\Presentation\Illuminate;
 
 use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Builder;
+use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
 
 class IlluminateSidebarRenderer implements SidebarRenderer
 {
+
     /**
      * @var Factory
      */
@@ -27,14 +28,14 @@ class IlluminateSidebarRenderer implements SidebarRenderer
     }
 
     /**
-     * @param Builder $builder
+     * @param Menu $menu
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function render(Builder $builder)
+    public function render(Menu $menu)
     {
         $groups = [];
-        foreach ($builder->getMenu()->getGroups() as $group) {
+        foreach ($menu->getGroups() as $group) {
             $groups[] = (new IlluminateGroupRenderer($this->factory))->render($group);
         }
 

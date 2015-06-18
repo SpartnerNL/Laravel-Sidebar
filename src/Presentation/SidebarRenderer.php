@@ -2,14 +2,14 @@
 
 namespace Maatwebsite\Sidebar\Presentation;
 
-use Maatwebsite\Sidebar\Builder;
+use Maatwebsite\Sidebar\Menu;
 
 interface SidebarRenderer
 {
     /**
-     * @param Builder $builder
+     * @param Menu $menu
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function render(Builder $builder);
+    public function render(Menu $menu);
 }
