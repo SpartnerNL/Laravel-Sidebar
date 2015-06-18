@@ -11,11 +11,12 @@ use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Maatwebsite\Sidebar\Traits\ItemableTrait;
+use Maatwebsite\Sidebar\Traits\Routeable;
 use Serializable;
 
 class DefaultItem implements Item, Serializable
 {
-    use CallableTrait, CacheableTrait, ItemableTrait;
+    use CallableTrait, CacheableTrait, ItemableTrait, Routeable;
 
     /**
      * @var string
@@ -31,11 +32,6 @@ class DefaultItem implements Item, Serializable
      * @var string
      */
     protected $icon;
-
-    /**
-     * @var string
-     */
-    protected $url;
 
     /**
      * @var Collection|Badge[]
@@ -142,41 +138,6 @@ class DefaultItem implements Item, Serializable
     }
 
     /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     *
-     * @return Item
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @param       $route
-     * @param array $params
-     *
-     * @return Item
-     */
-    public function route($route, $params = [])
-    {
-        $this->setUrl(
-            route($route, $params)
-        );
-
-        return $this;
-    }
-
-    /**
      * @param callable|null|string $callbackOrValue
      * @param string|null          $className
      *
@@ -222,12 +183,33 @@ class DefaultItem implements Item, Serializable
     }
 
     /**
-     * @param callable|string|null $callbackOrUrl
-     * @param string|null          $icon
+     * @param null        $callbackOrRoute
+     * @param string|null $icon
+     * @param null        $name
+     *
+     * @return Append
      */
-    public function append($callbackOrUrl = null, $icon = null)
+    public function append($callbackOrRoute = null, $icon = null, $name = null)
     {
-        // TODO: implement
+        $append = $this->container->make('Maatwebsite\Sidebar\Append');
+
+        if (is_callable($callbackOrRoute)) {
+            $this->call($callbackOrRoute, $append);
+        } elseif ($callbackOrRoute) {
+            $append->route($callbackOrRoute);
+        }
+
+        if ($name) {
+            $append->setName($name);
+        }
+
+        if ($icon) {
+            $append->setIcon($icon);
+        }
+
+        $this->addAppend($append);
+
+        return $append;
     }
 
     /**

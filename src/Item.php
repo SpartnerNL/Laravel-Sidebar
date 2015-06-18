@@ -82,8 +82,11 @@ interface Item extends Itemable
     /**
      * @param callable|string|null $callbackOrUrl
      * @param string|null          $icon
+     * @param null                 $name
+     *
+     * @return Append
      */
-    public function append($callbackOrUrl = null, $icon = null);
+    public function append($callbackOrUrl = null, $icon = null, $name = null);
 
     /**
      * @param Append $append

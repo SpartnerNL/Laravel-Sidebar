@@ -11,6 +11,8 @@ interface Badge
 
     /**
      * @param mixed $value
+     *
+     * @return Badge
      */
     public function setValue($value);
 
@@ -21,6 +23,8 @@ interface Badge
 
     /**
      * @param string $class
+     *
+     * @return Badge
      */
     public function setClass($class);
 }

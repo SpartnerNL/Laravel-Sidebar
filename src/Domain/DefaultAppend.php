@@ -3,14 +3,15 @@
 namespace Maatwebsite\Sidebar\Domain;
 
 use Illuminate\Contracts\Container\Container;
-use Maatwebsite\Sidebar\Badge;
+use Maatwebsite\Sidebar\Append;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
+use Maatwebsite\Sidebar\Traits\Routeable;
 use Serializable;
 
-class DefaultBadge implements Badge, Serializable
+class DefaultAppend implements Append, Serializable
 {
-    use CallableTrait, CacheableTrait;
+    use CallableTrait, CacheableTrait, Routeable;
 
     /**
      * @var Container
@@ -18,21 +19,22 @@ class DefaultBadge implements Badge, Serializable
     protected $container;
 
     /**
-     * @var mixed
+     * @var string|null
      */
-    protected $value = null;
+    protected $name = null;
 
     /**
      * @var string
      */
-    protected $class = 'badge badge-default';
+    protected $icon = 'fa fa-plus';
 
     /**
      * @var array
      */
     protected $cacheables = [
-        'value',
-        'class'
+        'name',
+        'url',
+        'icon'
     ];
 
     /**
@@ -44,21 +46,21 @@ class DefaultBadge implements Badge, Serializable
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
-    public function getValue()
+    public function getName()
     {
-        return $this->value;
+        return $this->name;
     }
 
     /**
-     * @param mixed $value
+     * @param null|string $name
      *
-     * @return Badge
+     * @return Append
      */
-    public function setValue($value)
+    public function setName($name)
     {
-        $this->value = $value;
+        $this->name = $name;
 
         return $this;
     }
@@ -66,19 +68,19 @@ class DefaultBadge implements Badge, Serializable
     /**
      * @return string
      */
-    public function getClass()
+    public function getIcon()
     {
-        return $this->class;
+        return $this->icon;
     }
 
     /**
-     * @param string $class
+     * @param string $icon
      *
      * @return Badge
      */
-    public function setClass($class)
+    public function setIcon($icon)
     {
-        $this->class = $class;
+        $this->icon = $icon;
 
         return $this;
     }

@@ -1,5 +1,6 @@
 <?php
 
+use Maatwebsite\Sidebar\Domain\DefaultAppend;
 use Maatwebsite\Sidebar\Domain\DefaultBadge;
 use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Item;
@@ -85,9 +86,9 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
 
     public function test_can_add_a_badge_instance()
     {
-        $item = new DefaultBadge($this->container);
-        $item->setValue(1);
-        $this->item->addBadge($item);
+        $badge = new DefaultBadge($this->container);
+        $badge->setValue(1);
+        $this->item->addBadge($badge);
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $this->item->getBadges());
         $this->assertCount(1, $this->item->getBadges());
@@ -96,7 +97,7 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
 
     public function test_can_add_a_badge()
     {
-        $mock = $this->mockContainerMake();
+        $mock = $this->mockContainerMakeForBadge();
         $mock->shouldReceive('setValue');
         $mock->shouldReceive('setClass');
         $mock->shouldReceive('getValue')->andReturn(1);
@@ -110,11 +111,52 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('className', $this->item->getBadges()->first()->getClass());
     }
 
-    protected function mockContainerMake()
+    public function test_can_add_a_append_instance()
+    {
+        $append = new DefaultAppend($this->container);
+        $append->setUrl('url');
+        $this->item->addAppend($append);
+
+        $this->assertInstanceOf('Illuminate\Support\Collection', $this->item->getAppends());
+        $this->assertCount(1, $this->item->getAppends());
+        $this->assertEquals('url', $this->item->getAppends()->first()->getUrl());
+    }
+
+    public function test_can_add_a_append()
+    {
+        $mock = $this->mockContainerMakeForAppend();
+        $mock->shouldReceive('route');
+        $mock->shouldReceive('setIcon');
+        $mock->shouldReceive('setName');
+        $mock->shouldReceive('getUrl')->andReturn('url');
+        $mock->shouldReceive('getIcon')->andReturn('icon');
+        $mock->shouldReceive('getName')->andReturn('name');
+
+        $this->item->append('route', 'icon', 'name');
+
+        $this->assertInstanceOf('Illuminate\Support\Collection', $this->item->getAppends());
+        $this->assertCount(1, $this->item->getAppends());
+        $this->assertEquals('url', $this->item->getAppends()->first()->getUrl());
+        $this->assertEquals('icon', $this->item->getAppends()->first()->getIcon());
+        $this->assertEquals('name', $this->item->getAppends()->first()->getName());
+    }
+
+    protected function mockContainerMakeForBadge()
     {
         $mock = m::mock('Maatwebsite\Sidebar\Badge');
 
         $this->container->shouldReceive('make')->with('Maatwebsite\Sidebar\Badge')->andReturn(
+            $mock
+        );
+
+        return $mock;
+    }
+
+    protected function mockContainerMakeForAppend()
+    {
+        $mock = m::mock('Maatwebsite\Sidebar\Append');
+
+        $this->container->shouldReceive('make')->with('Maatwebsite\Sidebar\Append')->andReturn(
             $mock
         );
 
