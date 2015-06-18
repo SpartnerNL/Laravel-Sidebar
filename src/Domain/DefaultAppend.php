@@ -4,14 +4,15 @@ namespace Maatwebsite\Sidebar\Domain;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Append;
+use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
-use Maatwebsite\Sidebar\Traits\Routeable;
+use Maatwebsite\Sidebar\Traits\RouteableTrait;
 use Serializable;
 
 class DefaultAppend implements Append, Serializable
 {
-    use CallableTrait, CacheableTrait, Routeable;
+    use CallableTrait, CacheableTrait, RouteableTrait, AuthorizableTrait;
 
     /**
      * @var Container

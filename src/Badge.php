@@ -2,7 +2,7 @@
 
 namespace Maatwebsite\Sidebar;
 
-interface Badge
+interface Badge extends Authorizable
 {
     /**
      * @return mixed

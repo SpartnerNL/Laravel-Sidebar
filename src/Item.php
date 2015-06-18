@@ -2,7 +2,7 @@
 
 namespace Maatwebsite\Sidebar;
 
-interface Item extends Itemable
+interface Item extends Itemable, Authorizable, Routeable
 {
     /**
      * @return mixed

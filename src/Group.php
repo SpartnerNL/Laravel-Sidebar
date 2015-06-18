@@ -4,7 +4,7 @@ namespace Maatwebsite\Sidebar;
 
 use Illuminate\Support\Collection;
 
-interface Group extends Itemable
+interface Group extends Itemable, Authorizable
 {
     /**
      * @return string

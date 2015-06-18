@@ -6,6 +6,7 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Collection;
 use Maatwebsite\Sidebar\Exceptions\LogicException;
 use Maatwebsite\Sidebar\Group;
+use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Maatwebsite\Sidebar\Traits\ItemableTrait;
@@ -13,7 +14,7 @@ use Serializable;
 
 class DefaultGroup implements Group, Serializable
 {
-    use CallableTrait, CacheableTrait, ItemableTrait;
+    use CallableTrait, CacheableTrait, ItemableTrait, AuthorizableTrait;
 
     /**
      * @var string

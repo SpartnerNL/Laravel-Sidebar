@@ -2,7 +2,7 @@
 
 namespace Maatwebsite\Sidebar;
 
-interface Append
+interface Append extends Authorizable, Routeable
 {
     /**
      * @return null|string

@@ -2,7 +2,7 @@
 
 namespace Maatwebsite\Sidebar\Traits;
 
-trait Routeable
+trait RouteableTrait
 {
     /**
      * @var string
@@ -20,7 +20,7 @@ trait Routeable
     /**
      * @param string $url
      *
-     * @return Item
+     * @return $this
      */
     public function setUrl($url)
     {
@@ -33,7 +33,7 @@ trait Routeable
      * @param       $route
      * @param array $params
      *
-     * @return Item
+     * @return $this
      */
     public function route($route, $params = [])
     {

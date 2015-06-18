@@ -8,15 +8,16 @@ use Maatwebsite\Sidebar\Append;
 use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Exceptions\LogicException;
 use Maatwebsite\Sidebar\Item;
+use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Maatwebsite\Sidebar\Traits\ItemableTrait;
-use Maatwebsite\Sidebar\Traits\Routeable;
+use Maatwebsite\Sidebar\Traits\RouteableTrait;
 use Serializable;
 
 class DefaultItem implements Item, Serializable
 {
-    use CallableTrait, CacheableTrait, ItemableTrait, Routeable;
+    use CallableTrait, CacheableTrait, ItemableTrait, RouteableTrait, AuthorizableTrait;
 
     /**
      * @var string

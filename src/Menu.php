@@ -5,7 +5,7 @@ namespace Maatwebsite\Sidebar;
 use Closure;
 use Illuminate\Support\Collection;
 
-interface Menu
+interface Menu extends Authorizable
 {
     /**
      * Init a new group or call an existing group and add it to the menu

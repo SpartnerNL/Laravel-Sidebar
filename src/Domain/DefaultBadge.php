@@ -4,13 +4,14 @@ namespace Maatwebsite\Sidebar\Domain;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Badge;
+use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Serializable;
 
 class DefaultBadge implements Badge, Serializable
 {
-    use CallableTrait, CacheableTrait;
+    use CallableTrait, CacheableTrait, AuthorizableTrait;
 
     /**
      * @var Container

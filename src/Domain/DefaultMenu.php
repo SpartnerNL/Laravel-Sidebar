@@ -7,13 +7,14 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Collection;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Menu;
+use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Serializable;
 
 class DefaultMenu implements Menu, Serializable
 {
-    use CallableTrait, CacheableTrait;
+    use CallableTrait, CacheableTrait, AuthorizableTrait;
 
     /**
      * @var Collection|Group[]
