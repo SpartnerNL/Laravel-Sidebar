@@ -10,6 +10,7 @@ use Maatwebsite\Sidebar\Menu;
 
 class StaticBuilderCacheDecorator implements Builder
 {
+
     /**
      * @var Builder
      */
@@ -32,8 +33,8 @@ class StaticBuilderCacheDecorator implements Builder
      */
     public function __construct(Builder $builder, CacheManager $cache, Repository $config)
     {
-        $this->builder  = $builder;
-        $this->cache    = $cache;
+        $this->builder = $builder;
+        $this->cache = $cache;
         $this->duration = $config->get('sidebar.cache.duration', 1440);
     }
 
@@ -90,5 +91,14 @@ class StaticBuilderCacheDecorator implements Builder
     protected function getCacheDuration()
     {
         return $this->duration;
+    }
+
+    /**
+     * Render Sidebar to HTML
+     * @return string
+     */
+    public function render()
+    {
+        return $this->builder->render();
     }
 }

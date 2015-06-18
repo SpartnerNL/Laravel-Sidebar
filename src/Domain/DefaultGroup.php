@@ -15,6 +15,11 @@ class DefaultGroup implements Group, Serializable
     use CallableTrait, CacheableTrait;
 
     /**
+     * @var Collection|Item[]
+     */
+    protected $items;
+
+    /**
      * @var string
      */
     protected $name;
@@ -40,6 +45,7 @@ class DefaultGroup implements Group, Serializable
      */
     protected $cacheables = [
         'name',
+        'items',
         'weight',
         'heading'
     ];
@@ -50,6 +56,7 @@ class DefaultGroup implements Group, Serializable
     public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->items = new Collection();
     }
 
     /**
@@ -117,6 +124,6 @@ class DefaultGroup implements Group, Serializable
      */
     public function getItems()
     {
-        return [];
+        return $this->items;
     }
 }
