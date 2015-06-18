@@ -3,9 +3,9 @@
 namespace Maatwebsite\Sidebar\Presentation\Illuminate;
 
 use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Group;
+use Maatwebsite\Sidebar\Badge;
 
-class IlluminateGroupRenderer
+class IlluminateBadgeRenderer
 {
     /**
      * @var Factory
@@ -15,7 +15,7 @@ class IlluminateGroupRenderer
     /**
      * @var string
      */
-    protected $view = 'sidebar::group';
+    protected $view = 'sidebar::badge';
 
     /**
      * @param Factory $factory
@@ -26,21 +26,15 @@ class IlluminateGroupRenderer
     }
 
     /**
-     * @param Group $group
+     * @param Badge $badge
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function render(Group $group)
+    public function render(Badge $badge)
     {
-        if ($group->isAuthorized()) {
-            $items = [];
-            foreach ($group->getItems() as $item) {
-                $items[] = (new IlluminateItemRenderer($this->factory))->render($item);
-            }
-
+        if ($badge->isAuthorized()) {
             return $this->factory->make($this->view, [
-                'group' => $group,
-                'items' => $items
+                'badge' => $badge
             ])->render();
         }
     }

@@ -33,13 +33,15 @@ class IlluminateSidebarRenderer implements SidebarRenderer
      */
     public function render(Menu $menu)
     {
-        $groups = [];
-        foreach ($menu->getGroups() as $group) {
-            $groups[] = (new IlluminateGroupRenderer($this->factory))->render($group);
-        }
+        if ($menu->isAuthorized()) {
+            $groups = [];
+            foreach ($menu->getGroups() as $group) {
+                $groups[] = (new IlluminateGroupRenderer($this->factory))->render($group);
+            }
 
-        return $this->factory->make($this->view, [
-            'groups' => $groups
-        ])->render();
+            return $this->factory->make($this->view, [
+                'groups' => $groups
+            ])->render();
+        }
     }
 }

@@ -3,9 +3,9 @@
 namespace Maatwebsite\Sidebar\Presentation\Illuminate;
 
 use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Group;
+use Maatwebsite\Sidebar\Append;
 
-class IlluminateGroupRenderer
+class IlluminateAppendRenderer
 {
     /**
      * @var Factory
@@ -15,7 +15,7 @@ class IlluminateGroupRenderer
     /**
      * @var string
      */
-    protected $view = 'sidebar::group';
+    protected $view = 'sidebar::append';
 
     /**
      * @param Factory $factory
@@ -26,21 +26,15 @@ class IlluminateGroupRenderer
     }
 
     /**
-     * @param Group $group
+     * @param Append $append
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function render(Group $group)
+    public function render(Append $append)
     {
-        if ($group->isAuthorized()) {
-            $items = [];
-            foreach ($group->getItems() as $item) {
-                $items[] = (new IlluminateItemRenderer($this->factory))->render($item);
-            }
-
+        if ($append->isAuthorized()) {
             return $this->factory->make($this->view, [
-                'group' => $group,
-                'items' => $items
+                'append' => $append
             ])->render();
         }
     }
