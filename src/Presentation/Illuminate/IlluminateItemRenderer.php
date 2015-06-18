@@ -4,6 +4,7 @@ namespace Maatwebsite\Sidebar\Presentation\Illuminate;
 
 use Illuminate\Contracts\View\Factory;
 use Maatwebsite\Sidebar\Item;
+use Maatwebsite\Sidebar\Presentation\ActiveStateChecker;
 
 class IlluminateItemRenderer
 {
@@ -52,7 +53,8 @@ class IlluminateItemRenderer
                 'item'    => $item,
                 'items'   => $items,
                 'badges'  => $badges,
-                'appends' => $appends
+                'appends' => $appends,
+                'active'  => (new ActiveStateChecker())->isActive($item),
             ])->render();
         }
     }

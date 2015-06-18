@@ -43,6 +43,18 @@ interface Item extends Itemable, Authorizable, Routeable
     /**
      * @return string
      */
+    public function getToggleIcon();
+
+    /**
+     * @param string $icon
+     *
+     * @return Item
+     */
+    public function setToggleIcon($icon);
+
+    /**
+     * @return string
+     */
     public function getUrl();
 
     /**

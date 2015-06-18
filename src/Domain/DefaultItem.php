@@ -32,7 +32,12 @@ class DefaultItem implements Item, Serializable
     /**
      * @var string
      */
-    protected $icon;
+    protected $icon = 'fa fa-angle-double-right';
+
+    /**
+     * @var string
+     */
+    protected $toggleIcon = 'fa fa-angle-left';
 
     /**
      * @var Collection|Badge[]
@@ -134,6 +139,26 @@ class DefaultItem implements Item, Serializable
     public function setIcon($icon)
     {
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToggleIcon()
+    {
+        return $this->toggleIcon;
+    }
+
+    /**
+     * @param string $icon
+     *
+     * @return Item
+     */
+    public function setToggleIcon($icon)
+    {
+        $this->toggleIcon = $icon;
 
         return $this;
     }
