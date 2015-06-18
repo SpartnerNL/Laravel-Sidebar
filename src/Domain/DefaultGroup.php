@@ -46,8 +46,6 @@ class DefaultGroup implements Group, Serializable
 
     /**
      * @param Container $container
-     *
-     * @internal param $name
      */
     public function __construct(Container $container)
     {

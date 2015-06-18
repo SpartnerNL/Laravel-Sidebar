@@ -43,6 +43,8 @@ class DefaultMenu implements Menu, Serializable
     }
 
     /**
+     * Init a new group or call an existing group and add it to the menu
+     *
      * @param          $name
      * @param callable $callback
      *
@@ -65,6 +67,8 @@ class DefaultMenu implements Menu, Serializable
     }
 
     /**
+     * Add a Group instance to the Menu
+     *
      * @param Group $group
      *
      * @return $this
@@ -77,6 +81,8 @@ class DefaultMenu implements Menu, Serializable
     }
 
     /**
+     * Get collection of Group instances sorted by their weight
+     *
      * @return Collection|Group[]
      */
     public function getGroups()
@@ -84,5 +90,33 @@ class DefaultMenu implements Menu, Serializable
         return $this->groups->sortBy(function (Group $group) {
             return $group->getWeight();
         });
+    }
+
+    /**
+     * Add another Menu instance and combined the two
+     * Groups with the same name get combined, but
+     * inherit each other's items
+     *
+     * @param Menu $menu
+     *
+     * @return Menu $menu
+     */
+    public function add(Menu $menu)
+    {
+        foreach ($menu->getGroups() as $group) {
+            if ($this->groups->contains($group->getName())) {
+                $existingGroup = $this->groups->get($group->getName());
+
+                $group->hideHeading(!$group->shouldShowHeading());
+
+                foreach ($group->getItems() as $item) {
+                    $existingGroup->addItem($item);
+                }
+            } else {
+                $this->addGroup($group);
+            }
+        }
+
+        return $this;
     }
 }

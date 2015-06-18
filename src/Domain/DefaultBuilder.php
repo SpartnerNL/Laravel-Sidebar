@@ -52,7 +52,7 @@ class DefaultBuilder implements Builder, Serializable
 
         $this->call($callback, $this->getMenu());
 
-        return $this;
+        return $this->menu;
     }
 
     /**

@@ -40,7 +40,7 @@ class DefaultBuilderTest extends PHPUnit_Framework_TestCase
     {
         $this->mockContainerMake();
 
-        $this->assertInstanceOf('Maatwebsite\Sidebar\Builder', $this->builder->build());
+        $this->assertInstanceOf('Maatwebsite\Sidebar\Menu', $this->builder->build());
     }
 
     public function test_can_build_new_menu_with_closure()
@@ -60,7 +60,7 @@ class DefaultBuilderTest extends PHPUnit_Framework_TestCase
         $second = $this->builder->build();
 
         $this->assertEquals($first, $second);
-        $this->assertInstanceOf('Maatwebsite\Sidebar\Builder', $second);
+        $this->assertInstanceOf('Maatwebsite\Sidebar\Menu', $second);
     }
 
     public function test_can_build_with_a_custom_menu()
@@ -70,8 +70,8 @@ class DefaultBuilderTest extends PHPUnit_Framework_TestCase
 
         $builder = $this->builder->build();
 
-        $this->assertInstanceOf('Maatwebsite\Sidebar\Builder', $builder);
-        $this->assertEquals($menu, $builder->getMenu());
+        $this->assertInstanceOf('Maatwebsite\Sidebar\Menu', $menu);
+        $this->assertEquals($menu, $menu);
     }
 
     public function test_cannot_set_menu_when_already_set()
@@ -82,6 +82,18 @@ class DefaultBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->build();
 
         $this->builder->setMenu(m::mock('Maatwebsite\Sidebar\Menu'));
+    }
+
+    public function test_builder_can_be_cached()
+    {
+        $this->mockContainerMake();
+        $this->builder->build();
+
+        $serialized   = serialize($this->builder);
+        $unserialized = unserialize($serialized);
+
+        $this->assertInstanceOf('Maatwebsite\Sidebar\Builder', $unserialized);
+        $this->assertInstanceOf('Maatwebsite\Sidebar\Menu', $unserialized->getMenu());
     }
 
     protected function mockContainerMake()
