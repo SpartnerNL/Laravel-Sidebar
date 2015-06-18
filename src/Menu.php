@@ -8,6 +8,8 @@ use Illuminate\Support\Collection;
 interface Menu
 {
     /**
+     * Init a new group or call an existing group and add it to the menu
+     *
      * @param          $name
      * @param callable $callback
      *
@@ -16,6 +18,8 @@ interface Menu
     public function group($name, Closure $callback = null);
 
     /**
+     * Add a Group instance to the Menu
+     *
      * @param Group $group
      *
      * @return $this
@@ -23,14 +27,25 @@ interface Menu
     public function addGroup(Group $group);
 
     /**
+     * Get collection of Group instances sorted by their weight
      * @return Collection|Group[]
      */
     public function getGroups();
 
     /**
+     * Add another Menu instance and combined the two
+     * Groups with the same name get combined, but
+     * inherit each other's items
+     *
      * @param Menu $menu
      *
-     * @return mixed
+     * @return Menu $menu
      */
     public function add(Menu $menu);
+
+    /**
+     * Render the Menu instance to HTML
+     * @return string
+     */
+    public function render();
 }

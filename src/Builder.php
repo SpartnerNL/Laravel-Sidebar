@@ -24,4 +24,10 @@ interface Builder
      * @return Builder
      */
     public function setMenu(Menu $menu);
+
+    /**
+     * Render Sidebar to HTML
+     * @return string
+     */
+    public function render();
 }

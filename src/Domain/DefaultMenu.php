@@ -82,7 +82,6 @@ class DefaultMenu implements Menu, Serializable
 
     /**
      * Get collection of Group instances sorted by their weight
-     *
      * @return Collection|Group[]
      */
     public function getGroups()
@@ -118,5 +117,16 @@ class DefaultMenu implements Menu, Serializable
         }
 
         return $this;
+    }
+
+    /**
+     * Render the Menu instance to HTML
+     * @return string
+     */
+    public function render()
+    {
+        $renderer = $this->container->make('Maatwebsite\Sidebar\Presentation\SidebarRenderer');
+
+        return $renderer->render($this);
     }
 }

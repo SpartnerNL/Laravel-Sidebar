@@ -48,7 +48,7 @@ class DefaultBuilder implements Builder, Serializable
      */
     public function build(Closure $callback = null)
     {
-        $this->menu = $this->menu ?: $this->container->make(Menu::class);
+        $this->menu = $this->menu ?: $this->container->make('Maatwebsite\Sidebar\Menu');
 
         $this->call($callback, $this->getMenu());
 
@@ -77,5 +77,18 @@ class DefaultBuilder implements Builder, Serializable
         $this->menu = $menu;
 
         return $this;
+    }
+
+    /**
+     * Render Sidebar to HTML
+     * @return string
+     */
+    public function render()
+    {
+        if (!$this->menu) {
+            throw new LogicException('You first have to build the menu');
+        }
+
+        return $this->menu->render();
     }
 }

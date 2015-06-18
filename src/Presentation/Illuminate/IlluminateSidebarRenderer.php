@@ -8,7 +8,6 @@ use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
 
 class IlluminateSidebarRenderer implements SidebarRenderer
 {
-
     /**
      * @var Factory
      */
