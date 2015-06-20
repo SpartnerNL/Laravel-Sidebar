@@ -1,8 +1,9 @@
-<?php namespace Maatwebsite\Sidebar\Infrastructure;
+<?php
+
+namespace Maatwebsite\Sidebar\Infrastructure;
 
 class CacheKey
 {
-
     /**
      * @param      $name
      * @param null $id

@@ -1,11 +1,12 @@
-<?php namespace Maatwebsite\Sidebar\Infrastructure;
+<?php
+
+namespace Maatwebsite\Sidebar\Infrastructure;
 
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Contracts\Config\Repository as Config;
 
 class StaticCacheResolver implements SidebarResolver
 {
-
     /**
      * @var Cache
      */
@@ -28,9 +29,9 @@ class StaticCacheResolver implements SidebarResolver
      */
     public function __construct(ContainerResolver $resolver, Cache $cache, Config $config)
     {
-        $this->cache = $cache;
+        $this->cache    = $cache;
         $this->resolver = $resolver;
-        $this->config = $config;
+        $this->config   = $config;
     }
 
     /**

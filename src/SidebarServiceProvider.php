@@ -4,14 +4,10 @@ namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Maatwebsite\Sidebar\Infrastructure\ContainerResolver;
 use Maatwebsite\Sidebar\Infrastructure\SidebarResolverFactory;
-use Maatwebsite\Sidebar\Infrastructure\StaticCacheResolver;
-use Maatwebsite\Sidebar\Infrastructure\UserBasedCacheResolver;
 
 class SidebarServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool

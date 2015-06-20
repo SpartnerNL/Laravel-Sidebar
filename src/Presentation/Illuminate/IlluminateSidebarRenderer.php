@@ -3,8 +3,8 @@
 namespace Maatwebsite\Sidebar\Presentation\Illuminate;
 
 use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
+use Maatwebsite\Sidebar\Sidebar;
 
 class IlluminateSidebarRenderer implements SidebarRenderer
 {

@@ -1,4 +1,6 @@
-<?php namespace Maatwebsite\Sidebar\Infrastructure;
+<?php
+
+namespace Maatwebsite\Sidebar\Infrastructure;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Exceptions\LogicException;
@@ -6,7 +8,6 @@ use Maatwebsite\Sidebar\Sidebar;
 
 class ContainerResolver implements SidebarResolver
 {
-
     /**
      * @var Container
      */
@@ -23,8 +24,8 @@ class ContainerResolver implements SidebarResolver
     /**
      * @param $name
      *
-     * @return Sidebar
      * @throws LogicException
+     * @return Sidebar
      */
     public function resolve($name)
     {

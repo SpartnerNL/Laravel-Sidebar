@@ -3,12 +3,10 @@
 namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
-use Maatwebsite\Sidebar\Exceptions\LogicException;
 use Maatwebsite\Sidebar\Infrastructure\SidebarResolver;
 
 class SidebarManager
 {
-
     /**
      * @var array
      */
@@ -31,7 +29,7 @@ class SidebarManager
     public function __construct(Container $container, SidebarResolver $resolver)
     {
         $this->container = $container;
-        $this->resolver = $resolver;
+        $this->resolver  = $resolver;
     }
 
     /**
@@ -57,7 +55,6 @@ class SidebarManager
 
             // Don't resolve twice
             if (!$instance) {
-
                 $sidebar = $this->resolver->resolve($name);
 
                 $this->sidebars[$name] = $this->container->singleton($name, function () use ($sidebar) {
