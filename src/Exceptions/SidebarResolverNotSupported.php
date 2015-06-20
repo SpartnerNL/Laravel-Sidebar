@@ -2,6 +2,6 @@
 
 namespace Maatwebsite\Sidebar\Exceptions;
 
-class CacheDecoratorNotSupported extends \Exception
+class SidebarResolverNotSupported extends \Exception
 {
 }

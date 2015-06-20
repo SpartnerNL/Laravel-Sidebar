@@ -3,7 +3,7 @@
 namespace Maatwebsite\Sidebar\Presentation\Illuminate;
 
 use Illuminate\Contracts\View\Factory;
-use Maatwebsite\Sidebar\Menu;
+use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
 
 class IlluminateSidebarRenderer implements SidebarRenderer
@@ -27,12 +27,14 @@ class IlluminateSidebarRenderer implements SidebarRenderer
     }
 
     /**
-     * @param Menu $menu
+     * @param Sidebar $sidebar
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function render(Menu $menu)
+    public function render(Sidebar $sidebar)
     {
+        $menu = $sidebar->getMenu();
+
         if ($menu->isAuthorized()) {
             $groups = [];
             foreach ($menu->getGroups() as $group) {

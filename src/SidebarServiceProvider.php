@@ -2,11 +2,16 @@
 
 namespace Maatwebsite\Sidebar;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Maatwebsite\Sidebar\Infrastructure\BuilderCacheDecoratorFactory;
+use Maatwebsite\Sidebar\Infrastructure\ContainerResolver;
+use Maatwebsite\Sidebar\Infrastructure\SidebarResolverFactory;
+use Maatwebsite\Sidebar\Infrastructure\StaticCacheResolver;
+use Maatwebsite\Sidebar\Infrastructure\UserBasedCacheResolver;
 
 class SidebarServiceProvider extends ServiceProvider
 {
+
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool
@@ -24,6 +29,11 @@ class SidebarServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Resolve the sidebars when app is booted
+        $this->app->booted(function ($app) {
+            $app['Maatwebsite\Sidebar\SidebarManager']->resolve();
+        });
+
         $this->registerViews();
     }
 
@@ -36,20 +46,18 @@ class SidebarServiceProvider extends ServiceProvider
         // Register config
         $this->registerConfig();
 
-        // Bind Builder
-        $this->app->singleton('Maatwebsite\Sidebar\Builder', function ($app) {
+        // Bind SidebarResolver
+        $this->app->bind('Maatwebsite\Sidebar\Infrastructure\SidebarResolver', function (Application $app) {
 
-            $builder = $app->make('Maatwebsite\Sidebar\Domain\DefaultBuilder');
+            $resolver = SidebarResolverFactory::getClassName(
+                $app['config']->get('sidebar.cache.method')
+            );
 
-            if ($cache = $app['config'][$this->shortName]['cache']['method']) {
-                return $app->make(
-                    BuilderCacheDecoratorFactory::getClassName($cache),
-                    [$builder]
-                );
-            }
-
-            return $builder;
+            return $app->make($resolver);
         });
+
+        // Bind manager
+        $this->app->singleton('Maatwebsite\Sidebar\SidebarManager');
 
         // Bind Menu
         $this->app->bind(
@@ -132,8 +140,9 @@ class SidebarServiceProvider extends ServiceProvider
             'Maatwebsite\Sidebar\Group',
             'Maatwebsite\Sidebar\Badge',
             'Maatwebsite\Sidebar\Append',
-            'Maatwebsite\Sidebar\Builder',
-            'Maatwebsite\Sidebar\Presentation\SidebarRenderer'
+            'Maatwebsite\Sidebar\SidebarManager',
+            'Maatwebsite\Sidebar\Presentation\SidebarRenderer',
+            'Maatwebsite\Sidebar\Infrastructure\SidebarResolver'
         ];
     }
 }
