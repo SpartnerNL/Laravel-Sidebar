@@ -26,7 +26,7 @@ trait ItemableTrait
             $item = $this->items->get($name);
         } else {
             $item = $this->container->make('Maatwebsite\Sidebar\Item');
-            $item->setName($name);
+            $item->name($name);
         }
 
         $this->call($callback, $item);

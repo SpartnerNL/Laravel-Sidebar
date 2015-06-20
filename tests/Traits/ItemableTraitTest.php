@@ -76,7 +76,7 @@ class ItemableTraitTest extends PHPUnit_Framework_TestCase
     protected function mockContainerMake($name = null, $weight = null)
     {
         $mock = m::mock('Maatwebsite\Sidebar\Item');
-        $mock->shouldReceive('setName');
+        $mock->shouldReceive('name');
         $mock->shouldReceive('getName')->andReturn($name);
         $mock->shouldReceive('getWeight')->andReturn($weight);
 
