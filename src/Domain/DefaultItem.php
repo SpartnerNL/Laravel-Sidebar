@@ -228,11 +228,11 @@ class DefaultItem implements Item, Serializable
         }
 
         if ($name) {
-            $append->setName($name);
+            $append->name($name);
         }
 
         if ($icon) {
-            $append->setIcon($icon);
+            $append->icon($icon);
         }
 
         $this->addAppend($append);

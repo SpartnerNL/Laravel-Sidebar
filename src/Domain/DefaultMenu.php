@@ -57,7 +57,7 @@ class DefaultMenu implements Menu, Serializable
             $group = $this->groups->get($name);
         } else {
             $group = $this->container->make('Maatwebsite\Sidebar\Group');
-            $group->setName($name);
+            $group->name($name);
         }
 
         $this->call($callback, $group);
