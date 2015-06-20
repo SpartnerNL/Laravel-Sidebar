@@ -3,6 +3,7 @@
 namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
+use Maatwebsite\Sidebar\Exceptions\LogicException;
 use Maatwebsite\Sidebar\Infrastructure\SidebarResolver;
 
 class SidebarManager
@@ -38,10 +39,15 @@ class SidebarManager
      * @param $name
      *
      * @return $this
+     * @throws LogicException
      */
     public function register($name)
     {
-        $this->sidebars[$name] = null;
+        if (class_exists($name)) {
+            $this->sidebars[$name] = null;
+        } else {
+            throw new LogicException('Sidebar [' . $name . '] does not exist');
+        }
 
         return $this;
     }
