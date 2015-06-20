@@ -16,14 +16,14 @@ interface Group extends Itemable, Authorizable
      *
      * @return Group
      */
-    public function setName($name);
+    public function name($name);
 
     /**
      * @param int $weight
      *
      * @return Group
      */
-    public function setWeight($weight);
+    public function weight($weight);
 
     /**
      * @return int

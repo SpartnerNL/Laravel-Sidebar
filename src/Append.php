@@ -14,7 +14,7 @@ interface Append extends Authorizable, Routeable
      *
      * @return Append
      */
-    public function setName($name);
+    public function name($name);
 
     /**
      * @return string
@@ -26,7 +26,7 @@ interface Append extends Authorizable, Routeable
      *
      * @return Badge
      */
-    public function setIcon($icon);
+    public function icon($icon);
 
     /**
      * @return string
@@ -38,7 +38,7 @@ interface Append extends Authorizable, Routeable
      *
      * @return Item
      */
-    public function setUrl($url);
+    public function url($url);
 
     /**
      * @param       $route

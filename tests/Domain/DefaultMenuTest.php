@@ -54,7 +54,7 @@ class DefaultMenuTest extends PHPUnit_Framework_TestCase
     public function test_can_add_group_instance_to_menu()
     {
         $group = new DefaultGroup($this->container);
-        $group->setName('test');
+        $group->name('test');
 
         $this->menu->addGroup($group);
 
@@ -88,14 +88,14 @@ class DefaultMenuTest extends PHPUnit_Framework_TestCase
     public function test_get_groups_returns_sorted_groups()
     {
         $group = new DefaultGroup($this->container);
-        $group->setName('secondItem');
-        $group->setWeight(2);
+        $group->name('secondItem');
+        $group->weight(2);
 
         $this->menu->addGroup($group);
 
         $group = new DefaultGroup($this->container);
-        $group->setName('firstItem');
-        $group->setWeight(1);
+        $group->name('firstItem');
+        $group->weight(1);
 
         $this->menu->addGroup($group);
 
@@ -109,8 +109,8 @@ class DefaultMenuTest extends PHPUnit_Framework_TestCase
     {
         // Add group to original menu
         $group = new DefaultGroup($this->container);
-        $group->setName('existing');
-        $group->setWeight(2);
+        $group->name('existing');
+        $group->weight(2);
         $this->menu->addGroup($group);
 
         // Init new menu
@@ -118,14 +118,14 @@ class DefaultMenuTest extends PHPUnit_Framework_TestCase
 
         // Add a new one
         $group = new DefaultGroup($this->container);
-        $group->setName('new menu group');
-        $group->setWeight(1);
+        $group->name('new menu group');
+        $group->weight(1);
         $menu->addGroup($group);
 
         // Append to existing
         $group = new DefaultGroup($this->container);
-        $group->setName('existing');
-        $group->setWeight(2);
+        $group->name('existing');
+        $group->weight(2);
         $menu->addGroup($group);
 
         $this->menu->add($menu);

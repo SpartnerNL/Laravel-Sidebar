@@ -14,14 +14,14 @@ interface Item extends Itemable, Authorizable, Routeable
      *
      * @return Item $item
      */
-    public function setName($name);
+    public function name($name);
 
     /**
      * @param int $weight
      *
      * @return Item
      */
-    public function setWeight($weight);
+    public function weight($weight);
 
     /**
      * @return int
@@ -38,7 +38,7 @@ interface Item extends Itemable, Authorizable, Routeable
      *
      * @return Item
      */
-    public function setIcon($icon);
+    public function icon($icon);
 
     /**
      * @return string
@@ -50,7 +50,7 @@ interface Item extends Itemable, Authorizable, Routeable
      *
      * @return Item
      */
-    public function setToggleIcon($icon);
+    public function toggleIcon($icon);
 
     /**
      * @return string
@@ -62,7 +62,7 @@ interface Item extends Itemable, Authorizable, Routeable
      *
      * @return Item
      */
-    public function setUrl($url);
+    public function url($url);
 
     /**
      * @param       $route

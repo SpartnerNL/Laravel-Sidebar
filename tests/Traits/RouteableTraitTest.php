@@ -25,7 +25,7 @@ class RouteableTraitTest extends PHPUnit_Framework_TestCase
 
     public function test_can_set_url()
     {
-        $this->routeable->setUrl('url');
+        $this->routeable->url('url');
 
         $this->assertEquals('url', $this->routeable->getUrl());
     }

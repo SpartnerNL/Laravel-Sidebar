@@ -61,7 +61,7 @@ class DefaultGroup implements Group, Serializable
      *
      * @return Group
      */
-    public function setName($name)
+    public function name($name)
     {
         $this->name = $name;
 
@@ -81,7 +81,7 @@ class DefaultGroup implements Group, Serializable
      *
      * @return Group
      */
-    public function setWeight($weight)
+    public function weight($weight)
     {
         if (!is_int($weight)) {
             throw new LogicException('Weight should be an integer');

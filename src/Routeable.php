@@ -14,7 +14,7 @@ interface Routeable
      *
      * @return $this
      */
-    public function setUrl($url);
+    public function url($url);
 
     /**
      * @param       $route

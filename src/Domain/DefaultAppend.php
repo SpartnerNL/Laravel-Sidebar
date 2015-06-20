@@ -59,7 +59,7 @@ class DefaultAppend implements Append, Serializable
      *
      * @return Append
      */
-    public function setName($name)
+    public function name($name)
     {
         $this->name = $name;
 
@@ -79,7 +79,7 @@ class DefaultAppend implements Append, Serializable
      *
      * @return Badge
      */
-    public function setIcon($icon)
+    public function icon($icon)
     {
         $this->icon = $icon;
 

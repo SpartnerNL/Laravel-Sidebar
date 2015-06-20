@@ -38,27 +38,27 @@ class DefaultAppendTest extends PHPUnit_Framework_TestCase
 
     public function test_can_set_name()
     {
-        $this->append->setName('name');
+        $this->append->name('name');
         $this->assertEquals('name', $this->append->getName());
     }
 
     public function test_can_set_url()
     {
-        $this->append->setUrl('url');
+        $this->append->url('url');
         $this->assertEquals('url', $this->append->getUrl());
     }
 
     public function test_can_set_icon()
     {
-        $this->append->setIcon('icon');
+        $this->append->icon('icon');
         $this->assertEquals('icon', $this->append->getIcon());
     }
 
     public function test_append_can_be_cached()
     {
-        $this->append->setName('name');
-        $this->append->setUrl('url');
-        $this->append->setIcon('icon');
+        $this->append->name('name');
+        $this->append->url('url');
+        $this->append->icon('icon');
 
         $serialized   = serialize($this->append);
         $unserialized = unserialize($serialized);

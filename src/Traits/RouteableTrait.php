@@ -22,7 +22,7 @@ trait RouteableTrait
      *
      * @return $this
      */
-    public function setUrl($url)
+    public function url($url)
     {
         $this->url = $url;
 
@@ -37,7 +37,7 @@ trait RouteableTrait
      */
     public function route($route, $params = [])
     {
-        $this->setUrl(
+        $this->url(
             $this->container->make('url')->route($route, $params)
         );
 

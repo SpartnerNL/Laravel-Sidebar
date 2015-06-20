@@ -38,8 +38,8 @@ class SidebarManager
      *
      * @param $name
      *
-     * @return $this
      * @throws LogicException
+     * @return $this
      */
     public function register($name)
     {

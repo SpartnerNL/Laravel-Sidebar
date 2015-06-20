@@ -40,25 +40,25 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
 
     public function test_can_set_name()
     {
-        $this->item->setName('name');
+        $this->item->name('name');
         $this->assertEquals('name', $this->item->getName());
     }
 
     public function test_can_set_url()
     {
-        $this->item->setUrl('url');
+        $this->item->url('url');
         $this->assertEquals('url', $this->item->getUrl());
     }
 
     public function test_can_set_icon()
     {
-        $this->item->setIcon('icon');
+        $this->item->icon('icon');
         $this->assertEquals('icon', $this->item->getIcon());
     }
 
     public function test_can_set_weight()
     {
-        $this->item->setWeight(1);
+        $this->item->weight(1);
         $this->assertEquals(1, $this->item->getWeight());
     }
 
@@ -67,10 +67,10 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
         $item = new DefaultItem($this->container);
         $this->item->addItem($item);
 
-        $this->item->setName('name');
-        $this->item->setIcon('icon');
-        $this->item->setWeight(1);
-        $this->item->setUrl('url');
+        $this->item->name('name');
+        $this->item->icon('icon');
+        $this->item->weight(1);
+        $this->item->url('url');
 
         $serialized   = serialize($this->item);
         $unserialized = unserialize($serialized);
@@ -114,7 +114,7 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
     public function test_can_add_a_append_instance()
     {
         $append = new DefaultAppend($this->container);
-        $append->setUrl('url');
+        $append->url('url');
         $this->item->addAppend($append);
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $this->item->getAppends());

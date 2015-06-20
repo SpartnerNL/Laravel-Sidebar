@@ -29,7 +29,7 @@ class ItemableTraitTest extends PHPUnit_Framework_TestCase
     public function test_can_add_an_item_instance()
     {
         $item = new DefaultItem($this->container);
-        $item->setName('itemName');
+        $item->name('itemName');
         $this->itemable->addItem($item);
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $this->itemable->getItems());
@@ -60,14 +60,14 @@ class ItemableTraitTest extends PHPUnit_Framework_TestCase
     public function test_get_items_sorts_items_by_weight()
     {
         $item = new DefaultItem($this->container);
-        $item->setName('second item');
-        $item->setWeight(2);
+        $item->name('second item');
+        $item->weight(2);
         $this->itemable->addItem($item);
 
         $item = new DefaultItem($this->container);
         $this->itemable->addItem($item);
-        $item->setName('first item');
-        $item->setWeight(1);
+        $item->name('first item');
+        $item->weight(1);
 
         $this->assertCount(2, $this->itemable->getItems());
         $this->assertEquals('first item', $this->itemable->getItems()->first()->getName());

@@ -63,9 +63,11 @@ class DefaultItem implements Item, Serializable
         'weight',
         'url',
         'icon',
+        'toggleIcon',
         'items',
         'badges',
-        'appends'
+        'appends',
+        'authorized'
     ];
 
     /**
@@ -92,7 +94,7 @@ class DefaultItem implements Item, Serializable
      *
      * @return Item $item
      */
-    public function setName($name)
+    public function name($name)
     {
         $this->name = $name;
 
@@ -104,7 +106,7 @@ class DefaultItem implements Item, Serializable
      *
      * @return Item
      */
-    public function setWeight($weight)
+    public function weight($weight)
     {
         if (!is_int($weight)) {
             throw new LogicException('Weight should be an integer');
@@ -136,7 +138,7 @@ class DefaultItem implements Item, Serializable
      *
      * @return Item
      */
-    public function setIcon($icon)
+    public function icon($icon)
     {
         $this->icon = $icon;
 
@@ -156,7 +158,7 @@ class DefaultItem implements Item, Serializable
      *
      * @return Item
      */
-    public function setToggleIcon($icon)
+    public function toggleIcon($icon)
     {
         $this->toggleIcon = $icon;
 

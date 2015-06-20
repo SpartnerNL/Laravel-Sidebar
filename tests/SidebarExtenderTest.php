@@ -27,7 +27,7 @@ class SidebarExtenderTest extends PHPUnit_Framework_TestCase
     public function test_a_sidebar_can_be_extended_with_an_extender()
     {
         $group = new DefaultGroup($this->container);
-        $group->setName('original');
+        $group->name('original');
         $this->menu->addGroup($group);
 
         $extender = new StubSidebarExtender();
@@ -55,11 +55,11 @@ class StubSidebarExtender implements SidebarExtender
         $container = m::mock('Illuminate\Contracts\Container\Container');
 
         $group = new DefaultGroup($container);
-        $group->setName('new from extender');
+        $group->name('new from extender');
         $menu->addGroup($group);
 
         $group = new DefaultGroup($container);
-        $group->setName('original');
+        $group->name('original');
         $menu->addGroup($group);
 
         return $menu;
