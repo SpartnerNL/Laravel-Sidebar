@@ -126,8 +126,8 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
     {
         $mock = $this->mockContainerMakeForAppend();
         $mock->shouldReceive('route');
-        $mock->shouldReceive('setIcon');
-        $mock->shouldReceive('setName');
+        $mock->shouldReceive('icon');
+        $mock->shouldReceive('name');
         $mock->shouldReceive('getUrl')->andReturn('url');
         $mock->shouldReceive('getIcon')->andReturn('icon');
         $mock->shouldReceive('getName')->andReturn('name');
