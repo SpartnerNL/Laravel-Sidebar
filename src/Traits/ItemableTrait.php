@@ -22,7 +22,7 @@ trait ItemableTrait
      */
     public function item($name, Closure $callback = null)
     {
-        if ($this->items->contains($name)) {
+        if ($this->items->has($name)) {
             $item = $this->items->get($name);
         } else {
             $item = $this->container->make('Maatwebsite\Sidebar\Item');
