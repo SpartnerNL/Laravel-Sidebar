@@ -43,7 +43,7 @@ class IlluminateSidebarRenderer implements SidebarRenderer
 
             return $this->factory->make($this->view, [
                 'groups' => $groups
-            ])->render();
+            ]);
         }
     }
 }

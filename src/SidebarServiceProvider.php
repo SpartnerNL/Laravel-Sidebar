@@ -25,11 +25,6 @@ class SidebarServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Resolve the sidebars when app is booted
-        $this->app->booted(function ($app) {
-            $app['Maatwebsite\Sidebar\SidebarManager']->resolve();
-        });
-
         $this->registerViews();
     }
 
