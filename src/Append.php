@@ -24,7 +24,7 @@ interface Append extends Authorizable, Routeable
     /**
      * @param string $icon
      *
-     * @return Badge
+     * @return Append
      */
     public function icon($icon);
 

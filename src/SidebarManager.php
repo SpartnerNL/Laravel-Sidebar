@@ -44,7 +44,7 @@ class SidebarManager
     public function register($name)
     {
         if (class_exists($name)) {
-            $this->sidebars[$name] = null;
+            $this->sidebars[] = $name;
         } else {
             throw new LogicException('Sidebar [' . $name . '] does not exist');
         }
@@ -57,16 +57,13 @@ class SidebarManager
      */
     public function resolve()
     {
-        foreach ($this->sidebars as $name => $instance) {
+        foreach ($this->sidebars as $name) {
 
-            // Don't resolve twice
-            if (!$instance) {
-                $sidebar = $this->resolver->resolve($name);
+            $sidebar = $this->resolver->resolve($name);
 
-                $this->sidebars[$name] = $this->container->singleton($name, function () use ($sidebar) {
-                    return $sidebar;
-                });
-            }
+            $this->container->singleton($name, function() use ($sidebar) {
+                return $sidebar;
+            });
         }
     }
 }

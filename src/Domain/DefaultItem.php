@@ -82,7 +82,7 @@ class DefaultItem implements Item, Serializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {

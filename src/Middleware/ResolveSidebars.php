@@ -3,10 +3,9 @@
 namespace Maatwebsite\Sidebar\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Routing\Middleware;
 use Maatwebsite\Sidebar\SidebarManager;
 
-class ResolveSidebars implements Middleware
+class ResolveSidebars
 {
     /**
      * @var SidebarManager

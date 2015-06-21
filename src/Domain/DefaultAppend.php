@@ -57,7 +57,7 @@ class DefaultAppend implements Append, Serializable
     /**
      * @param null|string $name
      *
-     * @return Append
+     * @return $this
      */
     public function name($name)
     {
@@ -77,7 +77,7 @@ class DefaultAppend implements Append, Serializable
     /**
      * @param string $icon
      *
-     * @return Badge
+     * @return $this
      */
     public function icon($icon)
     {

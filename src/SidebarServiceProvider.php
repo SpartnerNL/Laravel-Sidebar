@@ -38,7 +38,7 @@ class SidebarServiceProvider extends ServiceProvider
         $this->registerConfig();
 
         // Bind SidebarResolver
-        $this->app->bind('Maatwebsite\Sidebar\Infrastructure\SidebarResolver', function (Application $app) {
+        $this->app->bind('Maatwebsite\Sidebar\Infrastructure\SidebarResolver', function(Application $app) {
 
             $resolver = SidebarResolverFactory::getClassName(
                 $app['config']->get('sidebar.cache.method')

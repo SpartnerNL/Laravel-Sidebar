@@ -2,6 +2,8 @@
 
 namespace Maatwebsite\Sidebar;
 
+use Illuminate\Support\Collection;
+
 interface Item extends Itemable, Authorizable, Routeable
 {
     /**

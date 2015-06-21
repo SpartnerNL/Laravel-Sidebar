@@ -3,6 +3,7 @@
 namespace Maatwebsite\Sidebar\Traits;
 
 use Closure;
+use Illuminate\Support\Collection;
 use Maatwebsite\Sidebar\Item;
 
 trait ItemableTrait
@@ -55,7 +56,7 @@ trait ItemableTrait
      */
     public function getItems()
     {
-        return $this->items->sortBy(function (Item $item) {
+        return $this->items->sortBy(function(Item $item) {
             return $item->getWeight();
         });
     }

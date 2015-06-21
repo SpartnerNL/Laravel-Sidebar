@@ -42,4 +42,5 @@ return Symfony\CS\Config\Config::create()
         'lowercase_keywords',
         'multiple_use',
         'line_after_namespace',
+        'function_call_space',
     ))->finder($finder);
