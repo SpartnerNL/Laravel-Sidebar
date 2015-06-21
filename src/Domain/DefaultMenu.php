@@ -53,7 +53,7 @@ class DefaultMenu implements Menu, Serializable
      */
     public function group($name, Closure $callback = null)
     {
-        if ($this->groups->contains($name)) {
+        if ($this->groups->has($name)) {
             $group = $this->groups->get($name);
         } else {
             $group = $this->container->make('Maatwebsite\Sidebar\Group');
@@ -104,7 +104,7 @@ class DefaultMenu implements Menu, Serializable
     public function add(Menu $menu)
     {
         foreach ($menu->getGroups() as $group) {
-            if ($this->groups->contains($group->getName())) {
+            if ($this->groups->has($group->getName())) {
                 $existingGroup = $this->groups->get($group->getName());
 
                 $group->hideHeading(!$group->shouldShowHeading());
