@@ -116,7 +116,7 @@ class SidebarServiceProvider extends ServiceProvider
 
         $this->publishes([
             $location => config_path($this->shortName . '.php'),
-        ]);
+        ], 'config');
     }
 
     /**
