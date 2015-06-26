@@ -87,7 +87,7 @@ class DefaultMenu implements Menu, Serializable
      */
     public function getGroups()
     {
-        return $this->groups->sortBy(function(Group $group) {
+        return $this->groups->sortBy(function (Group $group) {
             return $group->getWeight();
         });
     }

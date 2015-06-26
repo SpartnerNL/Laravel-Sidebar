@@ -12,7 +12,7 @@ trait CacheableTrait
     public function serialize()
     {
         $cacheables = [];
-        foreach ($this->cacheables as $cacheable) {
+        foreach ($this->getCacheables() as $cacheable) {
             $cacheables[$cacheable] = $this->{$cacheable};
         }
 
@@ -34,5 +34,13 @@ trait CacheableTrait
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function getCacheables()
+    {
+        return isset($this->cacheables) ? $this->cacheables : ['menu'];
     }
 }
