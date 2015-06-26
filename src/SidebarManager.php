@@ -4,6 +4,7 @@ namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Exceptions\LogicException;
+use Maatwebsite\Sidebar\Infrastructure\SidebarFlusher;
 use Maatwebsite\Sidebar\Infrastructure\SidebarResolver;
 
 class SidebarManager
@@ -58,12 +59,21 @@ class SidebarManager
     public function resolve()
     {
         foreach ($this->sidebars as $name) {
-
             $sidebar = $this->resolver->resolve($name);
 
-            $this->container->singleton($name, function() use ($sidebar) {
+            $this->container->singleton($name, function () use ($sidebar) {
                 return $sidebar;
             });
+        }
+    }
+
+    /**
+     * @param SidebarFlusher $flusher
+     */
+    public function flush(SidebarFlusher $flusher)
+    {
+        foreach ($this->sidebars as $name) {
+            $flusher->flush($name);
         }
     }
 }

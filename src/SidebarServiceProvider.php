@@ -4,6 +4,7 @@ namespace Maatwebsite\Sidebar;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Maatwebsite\Sidebar\Infrastructure\SidebarFlusherFactory;
 use Maatwebsite\Sidebar\Infrastructure\SidebarResolverFactory;
 
 class SidebarServiceProvider extends ServiceProvider
@@ -38,9 +39,19 @@ class SidebarServiceProvider extends ServiceProvider
         $this->registerConfig();
 
         // Bind SidebarResolver
-        $this->app->bind('Maatwebsite\Sidebar\Infrastructure\SidebarResolver', function(Application $app) {
+        $this->app->bind('Maatwebsite\Sidebar\Infrastructure\SidebarResolver', function (Application $app) {
 
             $resolver = SidebarResolverFactory::getClassName(
+                $app['config']->get('sidebar.cache.method')
+            );
+
+            return $app->make($resolver);
+        });
+
+        // Bind SidebarFlusher
+        $this->app->bind('Maatwebsite\Sidebar\Infrastructure\SidebarFlusher', function (Application $app) {
+
+            $resolver = SidebarFlusherFactory::getClassName(
                 $app['config']->get('sidebar.cache.method')
             );
 

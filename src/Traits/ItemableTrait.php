@@ -56,7 +56,7 @@ trait ItemableTrait
      */
     public function getItems()
     {
-        return $this->items->sortBy(function(Item $item) {
+        return $this->items->sortBy(function (Item $item) {
             return $item->getWeight();
         });
     }
