@@ -28,9 +28,9 @@ class FlushesSidebarCache
     }
 
     /**
-     * @param ShouldFlushCache $event
+     * Flush the sidebar cache
      */
-    public function handle(ShouldFlushCache $event)
+    public function handle()
     {
         $this->container->call([
             $this->manager,
