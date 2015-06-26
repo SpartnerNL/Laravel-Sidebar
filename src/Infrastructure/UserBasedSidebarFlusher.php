@@ -2,7 +2,6 @@
 
 namespace Maatwebsite\Sidebar\Infrastructure;
 
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 class UserBasedSidebarFlusher implements SidebarFlusher
@@ -13,18 +12,11 @@ class UserBasedSidebarFlusher implements SidebarFlusher
     protected $cache;
 
     /**
-     * @var Guard
-     */
-    protected $guard;
-
-    /**
      * @param Cache $cache
-     * @param Guard $guard
      */
-    public function __construct(Cache $cache, Guard $guard)
+    public function __construct(Cache $cache)
     {
         $this->cache = $cache;
-        $this->guard = $guard;
     }
 
     /**
@@ -34,8 +26,8 @@ class UserBasedSidebarFlusher implements SidebarFlusher
      */
     public function flush($name)
     {
-        $userId = $this->guard->check() ? $this->guard->user()->getAuthIdentifier() : null;
-
-        $this->cache->forget(CacheKey::get($name, $userId));
+        if ((new SupportsCacheTags())->isSatisfiedBy($this->cache)) {
+            $this->cache->tags(CacheKey::get($name))->flush();
+        }
     }
 }
