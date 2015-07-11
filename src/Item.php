@@ -113,4 +113,16 @@ interface Item extends Itemable, Authorizable, Routeable
      * @return Collection|Append[]
      */
     public function getAppends();
+
+    /**
+     * @param string $path
+     *
+     * @return $this
+     */
+    public function isActiveWhen($path);
+
+    /**
+     * @return string
+     */
+    public function getActiveWhen();
 }

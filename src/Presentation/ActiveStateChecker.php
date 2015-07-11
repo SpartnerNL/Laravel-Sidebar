@@ -21,6 +21,13 @@ class ActiveStateChecker
             }
         }
 
+        // Custom set active path
+        if ($path = $item->getActiveWhen()) {
+            return Request::is(
+                $path
+            );
+        }
+
         $path = ltrim(str_replace(url('/'), '', $item->getUrl()), '/');
 
         return Request::is(

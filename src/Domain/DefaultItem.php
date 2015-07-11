@@ -40,6 +40,11 @@ class DefaultItem implements Item, Serializable
     protected $toggleIcon = 'fa fa-angle-left';
 
     /**
+     * @var string|bool
+     */
+    protected $activeWhen = false;
+
+    /**
      * @var Collection|Badge[]
      */
     protected $badges;
@@ -258,5 +263,30 @@ class DefaultItem implements Item, Serializable
     public function getAppends()
     {
         return $this->appends;
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return $this
+     */
+    public function isActiveWhen($path)
+    {
+        // Remove unwanted chars
+        $path = ltrim($path, '/');
+        $path = rtrim($path, '/');
+        $path = rtrim($path, '?');
+
+        $this->activeWhen = $path;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActiveWhen()
+    {
+        return $this->activeWhen;
     }
 }
