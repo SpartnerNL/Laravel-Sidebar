@@ -12,7 +12,7 @@
 Require this package in your `composer.json` and run `composer update`.
 
 ```php
-"maatwebsite/laravel-sidebar": "~2.0.0"
+"maatwebsite/laravel-sidebar": "~2.1"
 ```
 
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`
