@@ -1,4 +1,4 @@
-# Laravel Sidebar 2.1.1
+# Laravel Sidebar
 
 [![GitHub release](https://img.shields.io/github/release/Maatwebsite/Laravel-Sidebar.svg?style=flat)](https://packagist.org/packages/maatwebsite/laravel-sidebar)
 [![Travis](https://img.shields.io/travis/Maatwebsite/Laravel-Sidebar.svg?style=flat)](https://travis-ci.org/Maatwebsite/Laravel-Sidebar)
