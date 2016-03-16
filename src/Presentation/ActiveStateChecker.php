@@ -15,8 +15,8 @@ class ActiveStateChecker
     public function isActive(Item $item)
     {
         // Check if one of the children is active
-        foreach ($item->getItems() as $item) {
-            if ($this->isActive($item)) {
+        foreach ($item->getItems() as $child) {
+            if ($this->isActive($child)) {
                 return true;
             }
         }
