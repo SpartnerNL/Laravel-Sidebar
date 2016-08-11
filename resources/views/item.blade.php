@@ -1,5 +1,5 @@
 <li class="@if($active)active @endif @if($item->hasItems()) treeview @endif clearfix">
-    <a href="{{ $item->getUrl() }}" @if(count($appends) > 0)class="hasAppend"@endif>
+    <a href="{{ $item->getUrl() }}" @if(count($appends) > 0)class="hasAppend"@endif @if($item->getNewTab())target="_blank"@endif>
         <i class="{{ $item->getIcon() }}"></i>
         <span>{{ $item->getName() }}</span>
 
