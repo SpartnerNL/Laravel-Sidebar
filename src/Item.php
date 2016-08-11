@@ -125,4 +125,16 @@ interface Item extends Itemable, Authorizable, Routeable
      * @return string
      */
     public function getActiveWhen();
+
+    /**
+     * @param string $newTab
+     *
+     * @return $this
+     */
+    public function isNewTab($newTab);
+
+    /**
+     * @return bool
+     */
+    public function getNewTab();
 }
