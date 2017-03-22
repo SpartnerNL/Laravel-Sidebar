@@ -45,6 +45,16 @@ class DefaultItem implements Item, Serializable
     protected $activeWhen = false;
 
     /**
+     * @var bool
+     */
+    protected $newTab = false;
+
+    /**
+     * @var string
+     */
+    protected $itemClass = '';
+
+    /**
      * @var Collection|Badge[]
      */
     protected $badges;
@@ -288,5 +298,45 @@ class DefaultItem implements Item, Serializable
     public function getActiveWhen()
     {
         return $this->activeWhen;
+    }
+
+    /**
+     * @param bool $newTab
+     *
+     * @return $this
+     */
+    public function isNewTab($newTab = true)
+    {
+        $this->newTab = $newTab;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getNewTab()
+    {
+        return $this->newTab;
+    }
+
+    /**
+     * @param string $itemClass
+     *
+     * @return $this
+     */
+    public function setItemClass($itemClass)
+    {
+        $this->itemClass = $itemClass;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getItemClass()
+    {
+        return $this->itemClass;
     }
 }
