@@ -1,4 +1,4 @@
-<li class="@if($item->getItemClass()){{ $item->getItemClass() }}@endif @if($active)active@endif @if($item->hasItems())treeview@endif clearfix">
+<li class="@if($item->getItemClass()){{ $item->getItemClass() }}@endif @if($active)active @endif @if($item->hasItems())treeview @endif clearfix">
     <a href="{{ $item->getUrl() }}" class="@if(count($appends) > 0) hasAppend @endif" @if($item->getNewTab())target="_blank"@endif>
         <i class="{{ $item->getIcon() }}"></i>
         <span>{{ $item->getName() }}</span>
