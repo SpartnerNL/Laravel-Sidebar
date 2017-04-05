@@ -7,7 +7,7 @@
 [![Packagist](https://img.shields.io/packagist/dm/Maatwebsite/Laravel-Sidebar.svg?style=flat)](https://packagist.org/packages/maatwebsite/laravel-sidebar)
 [![Packagist](https://img.shields.io/packagist/dt/Maatwebsite/Laravel-Sidebar.svg?style=flat)](https://packagist.org/packages/maatwebsite/laravel-sidebar)
 
-##Installation
+## Installation
 
 Require this package in your `composer.json` and run `composer update`.
 
@@ -39,16 +39,18 @@ To publish the config use:
 php artisan vendor:publish --tag="config"
 ```
 
-##Documentation
+## Documentation
 
 See the wiki: https://github.com/Maatwebsite/Laravel-Sidebar/wiki
 
-##Contributing
+## Contributing
+
 **ALL contributions** should be made to appropriate branch (e.g. 2.0 for 2.0.* bug fixes). Bug fixes should never be sent to the master branch.
 
 We follow PSR-1, PSR-2 and PSR-4 coding styles.
 
 Added or fixed functionality should be backed with unit tests.
 
-##License
+## License
+
 This package is licensed under MIT. You are free to use it in personal and commercial projects.
