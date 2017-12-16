@@ -41,6 +41,11 @@ interface Append extends Authorizable, Routeable
     public function url($url);
 
     /**
+     * @return string
+     */
+    public function getRoute();
+
+    /**
      * @param       $route
      * @param array $params
      *

@@ -41,6 +41,18 @@ class RouteableTraitTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('url', $this->routeable->getUrl());
     }
+
+    public function test_can_get_route()
+    {
+        $urlMock = m::mock('Illuminate\Contracts\Routing\UrlGenerator');
+        $urlMock->shouldReceive('route')->andReturn('url');
+
+        $this->container->shouldReceive('make')->andReturn($urlMock);
+
+        $this->routeable->route('route');
+
+        $this->assertEquals('route', $this->routeable->getRoute());
+    }
 }
 
 class StubRouteableClass
