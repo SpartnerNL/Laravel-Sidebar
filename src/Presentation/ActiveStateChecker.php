@@ -28,6 +28,10 @@ class ActiveStateChecker
             );
         }
 
+        if($route = $item->getRoute()) {
+            return Request::route()->getName() === $route;
+        }
+
         $path = ltrim(str_replace(url('/'), '', $item->getUrl()), '/');
 
         return Request::is(
