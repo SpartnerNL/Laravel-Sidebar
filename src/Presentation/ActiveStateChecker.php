@@ -29,7 +29,7 @@ class ActiveStateChecker
         }
 
         if($route = $item->getRoute()) {
-            return Request::route()->getName() === $route;
+            return $this->getPartialRoute(Request::route()->getName()) === $this->getPartialRoute($route);
         }
 
         $path = ltrim(str_replace(url('/'), '', $item->getUrl()), '/');
@@ -38,5 +38,17 @@ class ActiveStateChecker
             $path,
             $path . '/*'
         );
+    }
+
+    protected function getPartialRoute($route, $delimiter = '.', $parts = 2)
+    {
+        $route = explode($delimiter, $route);
+        $routeParts = [];
+
+        for($part = 0; $part < $parts; $part++) {
+            $routeParts[] = $route[$part];
+        }
+
+        return implode($delimiter, $routeParts);
     }
 }
