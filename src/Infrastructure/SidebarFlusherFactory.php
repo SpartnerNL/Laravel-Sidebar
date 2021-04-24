@@ -2,6 +2,7 @@
 
 namespace Maatwebsite\Sidebar\Infrastructure;
 
+use Illuminate\Support\Str;
 use Maatwebsite\Sidebar\Exceptions\SidebarFlusherNotSupported;
 
 class SidebarFlusherFactory
@@ -15,7 +16,7 @@ class SidebarFlusherFactory
     public static function getClassName($name)
     {
         if ($name) {
-            $class = __NAMESPACE__ . '\\' . studly_case($name) . 'SidebarFlusher';
+            $class = __NAMESPACE__ . '\\' . Str::studly($name) . 'SidebarFlusher';
 
             if (class_exists($class)) {
                 return $class;

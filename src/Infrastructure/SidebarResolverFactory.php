@@ -2,6 +2,7 @@
 
 namespace Maatwebsite\Sidebar\Infrastructure;
 
+use Illuminate\Support\Str;
 use Maatwebsite\Sidebar\Exceptions\SidebarResolverNotSupported;
 
 class SidebarResolverFactory
@@ -15,7 +16,7 @@ class SidebarResolverFactory
     public static function getClassName($name)
     {
         if ($name) {
-            $class = __NAMESPACE__ . '\\' . studly_case($name) . 'CacheResolver';
+            $class = __NAMESPACE__ . '\\' . Str::studly($name) . 'CacheResolver';
 
             if (class_exists($class)) {
                 return $class;
