@@ -1,7 +1,7 @@
 {
   "name": "maatwebsite/laravel-sidebar",
   "description": "A sidebar builder for Laravel",
-  "license": "LGPL",
+  "license": "MIT",
   "keywords": [
     "laravel",
     "sidebar",
