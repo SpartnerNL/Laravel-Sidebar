@@ -1,3 +1,5 @@
+# WARNING! Not actively supported or maintained.
+
 # Laravel Sidebar
 
 [![GitHub release](https://img.shields.io/github/release/Maatwebsite/Laravel-Sidebar.svg?style=flat)](https://packagist.org/packages/maatwebsite/laravel-sidebar)
