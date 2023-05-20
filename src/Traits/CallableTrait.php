@@ -3,12 +3,12 @@
 namespace Maatwebsite\Sidebar\Traits;
 
 use Closure;
-use Illuminate\Routing\ResolvesRouteDependencies;
+use Illuminate\Routing\RouteDependencyResolverTrait;
 use ReflectionFunction;
 
 trait CallableTrait
 {
-    use ResolvesRouteDependencies;
+    use RouteDependencyResolverTrait;
 
     /**
      * Preform a callback on this workbook instance.
