@@ -9,14 +9,21 @@ trait CacheableTrait
      * @link http://php.net/manual/en/serializable.serialize.php
      * @return string the string representation of the object or null
      */
-    public function serialize()
+    public function serialize(): string
+    {
+        $cacheables = $this->__serialize();
+
+        return serialize($cacheables);
+    }
+
+    public function __serialize(): array
     {
         $cacheables = [];
         foreach ($this->getCacheables() as $cacheable) {
             $cacheables[$cacheable] = $this->{$cacheable};
         }
 
-        return serialize($cacheables);
+        return $cacheables;
     }
 
     /**
@@ -27,10 +34,15 @@ trait CacheableTrait
      *
      * @return void
      */
-    public function unserialize($serialized)
+    public function unserialize($serialized): void
     {
         $data = unserialize($serialized);
 
+        $this->__unserialize($data);
+    }
+
+    public function __unserialize(array $data): void
+    {
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
         }

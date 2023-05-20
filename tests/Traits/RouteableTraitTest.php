@@ -5,7 +5,7 @@ use Maatwebsite\Sidebar\Routeable;
 use Maatwebsite\Sidebar\Traits\RouteableTrait;
 use Mockery as m;
 
-class RouteableTraitTest extends PHPUnit_Framework_TestCase
+class RouteableTraitTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -17,8 +17,9 @@ class RouteableTraitTest extends PHPUnit_Framework_TestCase
      */
     protected $routeable;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->routeable = new StubRouteableClass($this->container);
     }

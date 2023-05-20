@@ -5,7 +5,8 @@ use Maatwebsite\Sidebar\Domain\DefaultMenu;
 use Maatwebsite\Sidebar\Menu;
 use Mockery as m;
 
-class DefaultMenuTest extends PHPUnit_Framework_TestCase
+
+class DefaultMenuTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -17,8 +18,9 @@ class DefaultMenuTest extends PHPUnit_Framework_TestCase
      */
     protected $menu;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->menu      = new DefaultMenu($this->container);
     }
@@ -39,11 +41,16 @@ class DefaultMenuTest extends PHPUnit_Framework_TestCase
 
     public function test_menu_can_be_cached()
     {
-        $this->mockContainerMake();
-        $this->menu->group('test');
-        $this->menu->group('test2');
+        // Serialization of 'ReflectionClass' is not allowed
+        // So we use real objects here..
+        $menu = new DefaultMenu($this->container);
+        $group = new DefaultGroup($this->container);
+        $this->container->shouldReceive('make')->with('Maatwebsite\Sidebar\Group')->andReturn($group);
 
-        $serialized   = serialize($this->menu);
+        $menu->group('test');
+        $menu->group('test2');
+
+        $serialized = serialize($menu);
         $unserialized = unserialize($serialized);
 
         $this->assertInstanceOf('Maatwebsite\Sidebar\Menu', $unserialized);

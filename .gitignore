@@ -1,4 +1,6 @@
 /vendor
+/build
+/.idea
 composer.phar
 composer.lock
 .DS_Store

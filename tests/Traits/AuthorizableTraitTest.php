@@ -2,15 +2,16 @@
 
 use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
 
-class AuthorizableTraitTest extends PHPUnit_Framework_TestCase
+class AuthorizableTraitTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var StubItemableClass
      */
     protected $routeable;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->routeable = new StubAuthorizableClass();
     }
 

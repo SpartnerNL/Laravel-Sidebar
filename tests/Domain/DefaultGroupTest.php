@@ -5,7 +5,7 @@ use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Group;
 use Mockery as m;
 
-class DefaultGroupTest extends PHPUnit_Framework_TestCase
+class DefaultGroupTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -17,8 +17,9 @@ class DefaultGroupTest extends PHPUnit_Framework_TestCase
      */
     protected $group;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->group     = new DefaultGroup($this->container);
     }

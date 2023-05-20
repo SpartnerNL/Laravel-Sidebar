@@ -83,4 +83,5 @@ class DefaultBadge implements Badge, Serializable
 
         return $this;
     }
+
 }

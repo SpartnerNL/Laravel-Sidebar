@@ -6,7 +6,7 @@ use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\SidebarExtender;
 use Mockery as m;
 
-class SidebarExtenderTest extends PHPUnit_Framework_TestCase
+class SidebarExtenderTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -18,8 +18,9 @@ class SidebarExtenderTest extends PHPUnit_Framework_TestCase
      */
     protected $menu;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->menu      = new DefaultMenu($this->container);
     }

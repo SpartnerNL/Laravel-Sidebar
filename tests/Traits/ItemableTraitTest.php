@@ -8,7 +8,7 @@ use Maatwebsite\Sidebar\Traits\CallableTrait;
 use Maatwebsite\Sidebar\Traits\ItemableTrait;
 use Mockery as m;
 
-class ItemableTraitTest extends PHPUnit_Framework_TestCase
+class ItemableTraitTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -20,8 +20,9 @@ class ItemableTraitTest extends PHPUnit_Framework_TestCase
      */
     protected $itemable;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->itemable  = new StubItemableClass($this->container);
     }

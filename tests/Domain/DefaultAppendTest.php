@@ -4,7 +4,7 @@ use Maatwebsite\Sidebar\Append;
 use Maatwebsite\Sidebar\Domain\DefaultAppend;
 use Mockery as m;
 
-class DefaultAppendTest extends PHPUnit_Framework_TestCase
+class DefaultAppendTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -16,8 +16,9 @@ class DefaultAppendTest extends PHPUnit_Framework_TestCase
      */
     protected $append;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->append    = new DefaultAppend($this->container);
     }

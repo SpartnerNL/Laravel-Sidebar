@@ -6,7 +6,7 @@ use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Item;
 use Mockery as m;
 
-class DefaultItemTest extends PHPUnit_Framework_TestCase
+class DefaultItemTest extends \Maatwebsite\Sidebar\Tests\TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -18,8 +18,9 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
      */
     protected $item;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->item      = new DefaultItem($this->container);
     }
