@@ -8,17 +8,17 @@ use ReflectionFunction;
 
 trait CallableTrait
 {
-    use RouteDependencyResolverTrait;
-
-    /**
-     * Preform a callback on this workbook instance.
-     *
-     * @param callable $callback
-     * @param null     $caller
-     *
-     * @return $this
-     */
-    public function call(Closure $callback = null, $caller = null)
+  use RouteDependencyResolverTrait;
+  
+  /**
+   * Preform a callback on this workbook instance.
+   *
+   * @param Closure|string|null $callback
+   * @param null $caller
+   *
+   * @throws \ReflectionException
+   */
+  public function call(Closure|string $callback = null, $caller = null)
     {
         if ($callback instanceof Closure) {
             // Make dependency injection possible
