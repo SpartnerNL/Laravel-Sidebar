@@ -1,10 +1,13 @@
 <?php
 
+namespace Maatwebsite\Sidebar\Tests\Domain;
+
 use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Domain\DefaultBadge;
 use Mockery as m;
+use PHPUnit\Framework\TestCase as TestCase;
 
-class DefaultBadgeTest extends PHPUnit_Framework_TestCase
+class DefaultBadgeTest extends TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -16,7 +19,7 @@ class DefaultBadgeTest extends PHPUnit_Framework_TestCase
      */
     protected $badge;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container  = m::mock('Illuminate\Contracts\Container\Container');
         $this->badge      = new DefaultBadge($this->container);
