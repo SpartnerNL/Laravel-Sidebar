@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="CLI Arguments" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.005363">
-    <testsuite name="Maatwebsite\Sidebar\Tests\SidebarExtenderTest" file="C:\laragon\www\Laravel-Sidebar\tests\SidebarExtenderTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.005363">
-      <testcase name="test_a_sidebar_can_be_extended_with_an_extender" file="C:\laragon\www\Laravel-Sidebar\tests\SidebarExtenderTest.php" line="30" class="Maatwebsite\Sidebar\Tests\SidebarExtenderTest" classname="Maatwebsite.Sidebar.Tests.SidebarExtenderTest" assertions="3" time="0.005363"/>
+  <testsuite name="CLI Arguments" tests="6" assertions="9" errors="0" failures="0" skipped="0" time="0.006650">
+    <testsuite name="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" tests="6" assertions="9" errors="0" failures="0" skipped="0" time="0.006650">
+      <testcase name="test_can_instantiate_new_append" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="28" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.005261"/>
+      <testcase name="test_can_have_custom_appends" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="35" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000106"/>
+      <testcase name="test_can_set_name" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="42" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000916"/>
+      <testcase name="test_can_set_url" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="48" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000098"/>
+      <testcase name="test_can_set_icon" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="54" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000120"/>
+      <testcase name="test_append_can_be_cached" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="60" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="4" time="0.000149"/>
     </testsuite>
   </testsuite>
 </testsuites>
