@@ -3,7 +3,7 @@ composer.phar
 composer.lock
 .DS_Store
 .php_cs.cache
-build
+/build
 coverage
 .phpunit.result.cache
-.idea
+/.idea
