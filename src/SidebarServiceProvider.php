@@ -104,10 +104,10 @@ class SidebarServiceProvider extends ServiceProvider
      */
     protected function registerViews()
     {
-        $allowedViews = ['AdminLTE2', 'AdminLTE3', 'custom'];
-        $defaultView = 'adminlte-2';
-
-        $view = config('sidebar.view') && in_array(config('sidebar.view'), $allowedViews) ? 'adminlte-' . substr(config('sidebar.view'), -1) : $defaultView;
+        $view = match (config('sidebar.view')){
+            'AdminLTE3' => 'adminlte-3',
+            default => 'adminlte-2',
+        };
 
         $location = __DIR__ . "/../resources/views/{$view}";
 
@@ -115,7 +115,7 @@ class SidebarServiceProvider extends ServiceProvider
 
         $this->publishes([
             $location => base_path('resources/views/vendor/' . $this->shortName),
-        ], 'views');
+        ], 'sidebar-views');
     }
 
     /**
@@ -132,7 +132,7 @@ class SidebarServiceProvider extends ServiceProvider
 
         $this->publishes([
             $location => config_path($this->shortName . '.php'),
-        ], 'config');
+        ], 'sidebar-config');
     }
 
     /**
