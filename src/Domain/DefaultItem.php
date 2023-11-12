@@ -339,4 +339,32 @@ class DefaultItem implements Item, Serializable
     {
         return $this->itemClass;
     }
+
+    public function __serialize():array
+    {
+        return [
+            'name' => $this->name,
+            'weight' => $this->weight,
+            'url' => $this->url,
+            'icon' => $this->icon,
+            'toggleIcon' => $this->toggleIcon,
+            'items' => $this->items,
+            'badges' => $this->badges,
+            'appends' => $this->appends,
+            'authorized' => $this->authorized,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->name = $data['name'];
+        $this->weight = $data['weight'];
+        $this->url = $data['url'];
+        $this->icon = $data['icon'];
+        $this->toggleIcon = $data['toggleIcon'];
+        $this->items = $data['items'];
+        $this->badges = $data['badges'];
+        $this->appends = $data['appends'];
+        $this->authorized = $data['authorized'];
+    }
 }

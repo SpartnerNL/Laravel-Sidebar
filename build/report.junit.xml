@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="CLI Arguments" tests="6" assertions="9" errors="0" failures="0" skipped="0" time="0.005568">
-    <testsuite name="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" tests="6" assertions="9" errors="0" failures="0" skipped="0" time="0.005568">
-      <testcase name="test_can_instantiate_new_append" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="28" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.004179"/>
-      <testcase name="test_can_have_custom_appends" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="35" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000110"/>
-      <testcase name="test_can_set_name" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="42" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000953"/>
-      <testcase name="test_can_set_url" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="48" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000097"/>
-      <testcase name="test_can_set_icon" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="54" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="1" time="0.000092"/>
-      <testcase name="test_append_can_be_cached" file="C:\laragon\www\Laravel-Sidebar\tests\Domain\DefaultAppendTest.php" line="60" class="Maatwebsite\Sidebar\Tests\Domain\DefaultAppendTest" classname="Maatwebsite.Sidebar.Tests.Domain.DefaultAppendTest" assertions="4" time="0.000138"/>
+  <testsuite name="CLI Arguments" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.119734">
+    <testsuite name="Maatwebsite\Sidebar\Tests\Traits\RouteableTraitTest" file="C:\laragon\www\Laravel-Sidebar\tests\Traits\RouteableTraitTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.119734">
+      <testcase name="test_can_set_url" file="C:\laragon\www\Laravel-Sidebar\tests\Traits\RouteableTraitTest.php" line="29" class="Maatwebsite\Sidebar\Tests\Traits\RouteableTraitTest" classname="Maatwebsite.Sidebar.Tests.Traits.RouteableTraitTest" assertions="1" time="0.110373"/>
+      <testcase name="test_can_set_route" file="C:\laragon\www\Laravel-Sidebar\tests\Traits\RouteableTraitTest.php" line="36" class="Maatwebsite\Sidebar\Tests\Traits\RouteableTraitTest" classname="Maatwebsite.Sidebar.Tests.Traits.RouteableTraitTest" assertions="1" time="0.009360"/>
     </testsuite>
   </testsuite>
 </testsuites>
