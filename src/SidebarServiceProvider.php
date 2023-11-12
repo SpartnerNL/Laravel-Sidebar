@@ -104,7 +104,12 @@ class SidebarServiceProvider extends ServiceProvider
      */
     protected function registerViews()
     {
-        $location = __DIR__ . '/../resources/views';
+        $allowedViews = ['AdminLTE2', 'AdminLTE3', 'custom'];
+        $defaultView = 'adminlte-2';
+
+        $view = config('sidebar.view') && in_array(config('sidebar.view'), $allowedViews) ? 'adminlte-' . substr(config('sidebar.view'), -1) : $defaultView;
+
+        $location = __DIR__ . "/../resources/views/{$view}";
 
         $this->loadViewsFrom($location, $this->shortName);
 
