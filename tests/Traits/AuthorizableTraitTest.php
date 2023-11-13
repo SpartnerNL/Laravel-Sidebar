@@ -1,15 +1,18 @@
 <?php
 
-use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
+namespace Maatwebsite\Sidebar\Tests\Traits;
 
-class AuthorizableTraitTest extends PHPUnit_Framework_TestCase
+use Maatwebsite\Sidebar\Traits\AuthorizableTrait;
+use PHPUnit\Framework\TestCase as TestCase;
+
+class AuthorizableTraitTest extends TestCase
 {
     /**
      * @var StubItemableClass
      */
     protected $routeable;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->routeable = new StubAuthorizableClass();
     }

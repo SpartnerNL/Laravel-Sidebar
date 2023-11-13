@@ -39,8 +39,8 @@ trait CacheableTrait
     /**
      * @return array
      */
-    public function getCacheables()
+    public function getCacheables(): array
     {
-        return isset($this->cacheables) ? $this->cacheables : ['menu'];
+        return $this->cacheables ?? ['menu'];
     }
 }

@@ -104,13 +104,18 @@ class SidebarServiceProvider extends ServiceProvider
      */
     protected function registerViews()
     {
-        $location = __DIR__ . '/../resources/views';
+        $view = match (config('sidebar.view')){
+            'AdminLTE3' => 'adminlte-3',
+            default => 'adminlte-2',
+        };
+
+        $location = __DIR__ . "/../resources/views/{$view}";
 
         $this->loadViewsFrom($location, $this->shortName);
 
         $this->publishes([
             $location => base_path('resources/views/vendor/' . $this->shortName),
-        ], 'views');
+        ], 'sidebar-views');
     }
 
     /**
@@ -127,7 +132,7 @@ class SidebarServiceProvider extends ServiceProvider
 
         $this->publishes([
             $location => config_path($this->shortName . '.php'),
-        ], 'config');
+        ], 'sidebar-config');
     }
 
     /**

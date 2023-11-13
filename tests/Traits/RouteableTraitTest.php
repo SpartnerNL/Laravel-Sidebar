@@ -1,11 +1,14 @@
 <?php
 
+namespace Maatwebsite\Sidebar\Tests\Traits;
+
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Routeable;
 use Maatwebsite\Sidebar\Traits\RouteableTrait;
 use Mockery as m;
+use PHPUnit\Framework\TestCase as TestCase;
 
-class RouteableTraitTest extends PHPUnit_Framework_TestCase
+class RouteableTraitTest extends TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -17,7 +20,7 @@ class RouteableTraitTest extends PHPUnit_Framework_TestCase
      */
     protected $routeable;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->routeable = new StubRouteableClass($this->container);

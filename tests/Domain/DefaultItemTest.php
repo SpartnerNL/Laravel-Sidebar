@@ -1,12 +1,15 @@
 <?php
 
+namespace Maatwebsite\Sidebar\Tests\Domain;
+
 use Maatwebsite\Sidebar\Domain\DefaultAppend;
 use Maatwebsite\Sidebar\Domain\DefaultBadge;
 use Maatwebsite\Sidebar\Domain\DefaultItem;
 use Maatwebsite\Sidebar\Item;
 use Mockery as m;
+use PHPUnit\Framework\TestCase as TestCase;
 
-class DefaultItemTest extends PHPUnit_Framework_TestCase
+class DefaultItemTest extends TestCase
 {
     /**
      * @var Illuminate\Contracts\Container\Container
@@ -18,7 +21,7 @@ class DefaultItemTest extends PHPUnit_Framework_TestCase
      */
     protected $item;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container = m::mock('Illuminate\Contracts\Container\Container');
         $this->item      = new DefaultItem($this->container);
